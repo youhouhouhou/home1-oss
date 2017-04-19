@@ -1,0 +1,5 @@
+com.yirendai.oss.lib.webmvc.api
+com.yirendai.oss.lib.webmvc.internal
+com.yirendai.oss.lib.webmvc.starter
+org.springframework.http.converter
+org.springframework.web
