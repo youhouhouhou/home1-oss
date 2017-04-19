@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./HystrixProperty.html" title="com.yirendai.oss.lib.histrix.config.HystrixProperty" alt="" coords="819,182,1266,311"/>
+<area shape="rect" id="node1" href="./HystrixProperty.html" title="&lt;TABLE&gt;" alt="" coords="809,177,1277,317"/>
+<area shape="rect" id="node2_1" href="./HystrixProperty.BooleanProperty.html" title="com.yirendai.oss.lib.histrix.config.HystrixProperty.BooleanProperty" alt="" coords="16,371,507,448"/>
+<area shape="rect" id="node2" href="./HystrixProperty.BooleanProperty.html" title="&lt;TABLE&gt;" alt="" coords="5,365,517,453"/>
+<area shape="rect" id="node3_2" href="./HystrixProperty.StringProperty.html" title="com.yirendai.oss.lib.histrix.config.HystrixProperty.StringProperty" alt="" coords="553,371,1018,448"/>
+<area shape="rect" id="node3" href="./HystrixProperty.StringProperty.html" title="&lt;TABLE&gt;" alt="" coords="542,365,1029,453"/>
+<area shape="rect" id="node4_3" href="./HystrixProperty.IntegerProperty.html" title="com.yirendai.oss.lib.histrix.config.HystrixProperty.IntegerProperty" alt="" coords="1063,371,1540,448"/>
+<area shape="rect" id="node4" href="./HystrixProperty.IntegerProperty.html" title="&lt;TABLE&gt;" alt="" coords="1052,365,1551,453"/>
+<area shape="rect" id="node5_4" href="./HystrixProperty.LongProperty.html" title="com.yirendai.oss.lib.histrix.config.HystrixProperty.LongProperty" alt="" coords="1585,371,2039,448"/>
+<area shape="rect" id="node5" href="./HystrixProperty.LongProperty.html" title="&lt;TABLE&gt;" alt="" coords="1575,365,2049,453"/>
+<area shape="rect" id="node6_5" href="http://java.sun.com/j2se/1.4.2/docs/api/com/netflix/hystrix/strategy/properties/HystrixDynamicProperty.html" title="com.netflix.hystrix.strategy.properties.HystrixDynamicProperty" alt="" coords="940,11,1145,123"/>
+<area shape="rect" id="node6" href="http://java.sun.com/j2se/1.4.2/docs/api/com/netflix/hystrix/strategy/properties/HystrixDynamicProperty.html" title="&lt;TABLE&gt;" alt="" coords="929,5,1156,128"/>
+</map>
