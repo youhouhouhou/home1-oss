@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EncryptDefaultLoginPageGeneratingFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-lib-security-spring-boot-1.4.1.RELEASE</a> &gt; <a href="index.source.html" class="el_package">com.yirendai.oss.lib.security.internal.template</a> &gt; <span class="el_source">EncryptDefaultLoginPageGeneratingFilter.java</span></div><h1>EncryptDefaultLoginPageGeneratingFilter.java</h1><pre class="source lang-java linenums">package com.yirendai.oss.lib.security.internal.template;
+
+import static com.yirendai.oss.boot.autoconfigure.AppSecurityProperties.ENCRYPTED_FIELD_PREFIX;
+import static com.yirendai.oss.lib.security.internal.template.SmartRedirectStrategy.PARAM_REDIRECT;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
+import com.yirendai.oss.lib.common.CodecUtils;
+
+import lombok.SneakyThrows;
+
+import org.apache.commons.io.IOUtils;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.WebAttributes;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
+import org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter;
+import org.springframework.security.web.csrf.CsrfToken;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * see: {@link DefaultLoginPageGeneratingFilter}
+ * Created by zhanghaolun on 16/11/9.
+ */
+public class EncryptDefaultLoginPageGeneratingFilter extends DefaultLoginPageGeneratingFilter {
+
+  private String loginPageUrl;
+  private String logoutSuccessUrl;
+  private String failureUrl;
+  private boolean formLoginEnabled;
+  private boolean openIdEnabled;
+  private String authenticationUrl;
+  private String usernameParameter;
+  private String passwordParameter;
+  private String rememberMeParameter;
+  private String openIDauthenticationUrl;
+  private String openIDusernameParameter;
+  private String openIDrememberMeParameter;
+
+  private String jsencrypt;
+  private String rsaPublicKey;
+
+<span class="nc" id="L54">  public EncryptDefaultLoginPageGeneratingFilter() {</span>
+<span class="nc" id="L55">    this.jsencrypt = this.getJsencrypt();</span>
+<span class="nc" id="L56">  }</span>
+
+<span class="nc" id="L58">  public EncryptDefaultLoginPageGeneratingFilter(final AbstractAuthenticationProcessingFilter filter) {</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">    if (filter instanceof UsernamePasswordAuthenticationFilter) {</span>
+<span class="nc" id="L60">      this.childInit((UsernamePasswordAuthenticationFilter) filter, null);</span>
+    } else {
+<span class="nc" id="L62">      this.childInit(null, filter);</span>
+    }
+<span class="nc" id="L64">  }</span>
+
+  public EncryptDefaultLoginPageGeneratingFilter( //
+    final UsernamePasswordAuthenticationFilter authFilter, //
+    final AbstractAuthenticationProcessingFilter openIdFilter //
+<span class="nc" id="L69">  ) {</span>
+<span class="nc" id="L70">    this.childInit(authFilter, openIdFilter);</span>
+<span class="nc" id="L71">  }</span>
+
+  private void childInit( //
+    final UsernamePasswordAuthenticationFilter authFilter, //
+    final AbstractAuthenticationProcessingFilter openIdFilter //
+  ) {
+<span class="nc bnc" id="L77" title="All 2 branches missed.">    this.loginPageUrl = this.loginPageUrl != null ? this.loginPageUrl : DEFAULT_LOGIN_PAGE_URL;</span>
+<span class="nc" id="L78">    this.logoutSuccessUrl = this.loginPageUrl + &quot;?logout&quot;;</span>
+<span class="nc" id="L79">    this.failureUrl = this.loginPageUrl + &quot;?&quot; + ERROR_PARAMETER_NAME;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">    if (authFilter != null) {</span>
+<span class="nc" id="L81">      this.formLoginEnabled = true;</span>
+<span class="nc" id="L82">      this.usernameParameter = authFilter.getUsernameParameter();</span>
+<span class="nc" id="L83">      this.passwordParameter = authFilter.getPasswordParameter();</span>
+
+<span class="nc bnc" id="L85" title="All 2 branches missed.">      if (authFilter.getRememberMeServices() instanceof AbstractRememberMeServices) {</span>
+<span class="nc" id="L86">        this.rememberMeParameter = ((AbstractRememberMeServices) authFilter</span>
+<span class="nc" id="L87">          .getRememberMeServices()).getParameter();</span>
+      }
+    }
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">    if (openIdFilter != null) {</span>
+<span class="nc" id="L92">      this.openIdEnabled = true;</span>
+<span class="nc" id="L93">      this.openIDusernameParameter = &quot;openid_identifier&quot;;</span>
+
+<span class="nc bnc" id="L95" title="All 2 branches missed.">      if (openIdFilter.getRememberMeServices() instanceof AbstractRememberMeServices) {</span>
+<span class="nc" id="L96">        this.openIDrememberMeParameter = ((AbstractRememberMeServices) openIdFilter</span>
+<span class="nc" id="L97">          .getRememberMeServices()).getParameter();</span>
+      }
+    }
+
+<span class="nc" id="L101">    this.jsencrypt = this.getJsencrypt();</span>
+<span class="nc" id="L102">  }</span>
+
+  @Override
+  public boolean isEnabled() {
+<span class="nc bnc" id="L106" title="All 4 branches missed.">    return this.formLoginEnabled || this.openIdEnabled;</span>
+  }
+
+  @Override
+  public void setLogoutSuccessUrl(final String logoutSuccessUrl) {
+<span class="nc" id="L111">    this.logoutSuccessUrl = logoutSuccessUrl;</span>
+<span class="nc" id="L112">  }</span>
+
+  @Override
+  public String getLoginPageUrl() {
+<span class="nc" id="L116">    return this.loginPageUrl;</span>
+  }
+
+  @Override
+  public void setLoginPageUrl(final String loginPageUrl) {
+<span class="nc" id="L121">    this.loginPageUrl = loginPageUrl;</span>
+<span class="nc" id="L122">  }</span>
+
+  @Override
+  public void setFailureUrl(final String failureUrl) {
+<span class="nc" id="L126">    this.failureUrl = failureUrl;</span>
+<span class="nc" id="L127">  }</span>
+
+  @Override
+  public void setFormLoginEnabled(final boolean formLoginEnabled) {
+<span class="nc" id="L131">    this.formLoginEnabled = formLoginEnabled;</span>
+<span class="nc" id="L132">  }</span>
+
+  @Override
+  public void setOpenIdEnabled(final boolean openIdEnabled) {
+<span class="nc" id="L136">    this.openIdEnabled = openIdEnabled;</span>
+<span class="nc" id="L137">  }</span>
+
+  @Override
+  public void setAuthenticationUrl(final String authenticationUrl) {
+<span class="nc" id="L141">    this.authenticationUrl = authenticationUrl;</span>
+<span class="nc" id="L142">  }</span>
+
+  @Override
+  public void setUsernameParameter(final String usernameParameter) {
+<span class="nc" id="L146">    this.usernameParameter = usernameParameter;</span>
+<span class="nc" id="L147">  }</span>
+
+  @Override
+  public void setPasswordParameter(final String passwordParameter) {
+<span class="nc" id="L151">    this.passwordParameter = passwordParameter;</span>
+<span class="nc" id="L152">  }</span>
+
+  @Override
+  public void setRememberMeParameter(final String rememberMeParameter) {
+<span class="nc" id="L156">    this.rememberMeParameter = rememberMeParameter;</span>
+<span class="nc" id="L157">    this.openIDrememberMeParameter = rememberMeParameter;</span>
+<span class="nc" id="L158">  }</span>
+
+  @Override
+  public void setOpenIDauthenticationUrl(final String openIDauthenticationUrl) {
+<span class="nc" id="L162">    this.openIDauthenticationUrl = openIDauthenticationUrl;</span>
+<span class="nc" id="L163">  }</span>
+
+  @Override
+  public void setOpenIDusernameParameter(final String openIDusernameParameter) {
+<span class="nc" id="L167">    this.openIDusernameParameter = openIDusernameParameter;</span>
+<span class="nc" id="L168">  }</span>
+
+<span class="nc" id="L170">  @SneakyThrows</span>
+  public String getJsencrypt() {
+<span class="nc" id="L172">    try (InputStream is = this.getClass().getClassLoader().getResourceAsStream(&quot;public/js/jsencrypt-2.3.1.min.js&quot;)) {</span>
+<span class="nc" id="L173">      return IOUtils.toString(is, StandardCharsets.UTF_8);</span>
+<span class="nc bnc" id="L174" title="All 8 branches missed.">    }</span>
+  }
+
+  public void setRsaPublicKey(final String rsaPublicKey) {
+<span class="nc" id="L178">    this.rsaPublicKey = rsaPublicKey;</span>
+<span class="nc" id="L179">  }</span>
+
+  @Override
+  public void doFilter( //
+    final ServletRequest req, //
+    final ServletResponse res, //
+    final FilterChain chain //
+  ) throws IOException, ServletException {
+<span class="nc" id="L187">    final HttpServletRequest request = (HttpServletRequest) req;</span>
+<span class="nc" id="L188">    final HttpServletResponse response = (HttpServletResponse) res;</span>
+
+<span class="nc" id="L190">    boolean loginError = childIsErrorPage(request);</span>
+<span class="nc" id="L191">    boolean logoutSuccess = childIsLogoutSuccess(request);</span>
+<span class="nc bnc" id="L192" title="All 6 branches missed.">    if (childIsLoginUrlRequest(request) || loginError || logoutSuccess) {</span>
+<span class="nc" id="L193">      String loginPageHtml = childGenerateLoginPageHtml(request, loginError,</span>
+        logoutSuccess);
+<span class="nc" id="L195">      response.setContentType(&quot;text/html;charset=UTF-8&quot;);</span>
+<span class="nc" id="L196">      response.setContentLength(loginPageHtml.length());</span>
+<span class="nc" id="L197">      response.getWriter().write(loginPageHtml);</span>
+
+<span class="nc" id="L199">      return;</span>
+    }
+
+<span class="nc" id="L202">    chain.doFilter(request, response);</span>
+<span class="nc" id="L203">  }</span>
+
+  private String childGenerateLoginPageHtml(HttpServletRequest request, boolean loginError,
+    boolean logoutSuccess) {
+<span class="nc" id="L207">    String errorMsg = &quot;none&quot;;</span>
+
+<span class="nc bnc" id="L209" title="All 2 branches missed.">    if (loginError) {</span>
+<span class="nc" id="L210">      HttpSession session = request.getSession(false);</span>
+
+<span class="nc bnc" id="L212" title="All 2 branches missed.">      if (session != null) {</span>
+<span class="nc" id="L213">        AuthenticationException ex = (AuthenticationException) session</span>
+<span class="nc" id="L214">          .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">        errorMsg = ex != null ? ex.getMessage() : &quot;none&quot;;</span>
+      }
+    }
+
+<span class="nc" id="L219">    StringBuilder sb = new StringBuilder();</span>
+
+<span class="nc" id="L221">    sb.append(&quot;&lt;html&gt;&quot;) //</span>
+<span class="nc" id="L222">      .append(&quot;&lt;head&gt;&quot;) //</span>
+<span class="nc" id="L223">      .append(&quot;&lt;title&gt;Login Page&lt;/title&gt;&quot;) //</span>
+<span class="nc" id="L224">      .append(&quot;&lt;/head&gt;&quot;);</span>
+
+<span class="nc bnc" id="L226" title="All 2 branches missed.">    if (this.formLoginEnabled) {</span>
+<span class="nc" id="L227">      sb.append(&quot;&lt;body onload='document.f.&quot;).append(this.usernameParameter)</span>
+<span class="nc" id="L228">        .append(&quot;.focus();'&gt;\n&quot;);</span>
+    }
+
+<span class="nc bnc" id="L231" title="All 2 branches missed.">    if (loginError) {</span>
+<span class="nc" id="L232">      sb.append(&quot;&lt;p&gt;&lt;font color='red'&gt;Your login attempt was not successful, try again.&lt;br/&gt;&lt;br/&gt;Reason: &quot;);</span>
+<span class="nc" id="L233">      sb.append(errorMsg);</span>
+<span class="nc" id="L234">      sb.append(&quot;&lt;/font&gt;&lt;/p&gt;&quot;);</span>
+    }
+
+<span class="nc bnc" id="L237" title="All 2 branches missed.">    if (logoutSuccess) {</span>
+<span class="nc" id="L238">      sb.append(&quot;&lt;p&gt;&lt;font color='green'&gt;You have been logged out&lt;/font&gt;&lt;/p&gt;&quot;);</span>
+    }
+
+<span class="nc bnc" id="L241" title="All 2 branches missed.">    if (this.formLoginEnabled) {</span>
+<span class="nc" id="L242">      final String redirectParam = request.getParameter(PARAM_REDIRECT);</span>
+<span class="nc" id="L243">      final String baseUri = request.getContextPath() + this.authenticationUrl;</span>
+<span class="nc bnc" id="L244" title="All 2 branches missed.">      final String action = isNotBlank(redirectParam) ?  //</span>
+<span class="nc" id="L245">        baseUri + &quot;?&quot; + PARAM_REDIRECT + &quot;=&quot; + CodecUtils.urlEncode(redirectParam) : baseUri;</span>
+<span class="nc" id="L246">      sb.append(&quot;&lt;h3&gt;Login with Username and Password.&lt;/h3&gt;&quot;);</span>
+<span class="nc" id="L247">      sb.append(&quot;&lt;form name='f' action='&quot;).append(action) //</span>
+<span class="nc" id="L248">        .append(&quot;' method='POST' onsubmit='return onSubmit();'&gt;\n&quot;);</span>
+<span class="nc" id="L249">      sb.append(&quot;&lt;table&gt;\n&quot;);</span>
+<span class="nc" id="L250">      sb.append(&quot;    &lt;tr&gt;&lt;td&gt;User:&lt;/td&gt;&lt;td&gt;&lt;input type='text' name='&quot;);</span>
+<span class="nc" id="L251">      sb.append(this.usernameParameter).append(&quot;' value='&quot;).append(&quot;'&gt;&lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+<span class="nc" id="L252">      sb.append(&quot;    &lt;tr&gt;&lt;td&gt;Password:&lt;/td&gt;&lt;td&gt;&lt;input type='password' name='&quot;)</span>
+<span class="nc" id="L253">        .append(this.passwordParameter).append(&quot;'/&gt;&lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+
+<span class="nc bnc" id="L255" title="All 2 branches missed.">      if (this.rememberMeParameter != null) {</span>
+<span class="nc" id="L256">        sb.append(&quot;    &lt;tr&gt;&lt;td&gt;&lt;input type='checkbox' name='&quot;)</span>
+<span class="nc" id="L257">          .append(this.rememberMeParameter)</span>
+<span class="nc" id="L258">          .append(&quot;'/&gt;&lt;/td&gt;&lt;td&gt;Remember me on this computer.&lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+      }
+
+<span class="nc" id="L261">      sb.append(&quot;    &lt;tr&gt;&lt;td colspan='2'&gt;\n&quot;)</span>
+<span class="nc" id="L262">        .append(&quot;        &lt;input onclick=\&quot;onClick()\&quot; name=\&quot;submit\&quot; type=\&quot;submit\&quot; value=\&quot;Login\&quot;/&gt;\n&quot;)</span>
+<span class="nc" id="L263">        .append(&quot;    &lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+<span class="nc" id="L264">      childRenderHiddenInputs(sb, request);</span>
+<span class="nc" id="L265">      sb.append(&quot;&lt;/table&gt;\n&quot;);</span>
+<span class="nc" id="L266">      sb.append(&quot;&lt;/form&gt;&quot;);</span>
+    }
+
+<span class="nc bnc" id="L269" title="All 2 branches missed.">    if (this.openIdEnabled) {</span>
+<span class="nc" id="L270">      sb.append(&quot;&lt;h3&gt;Login with OpenID Identity&lt;/h3&gt;&quot;);</span>
+<span class="nc" id="L271">      sb.append(&quot;&lt;form name='oidf' action='&quot;).append(request.getContextPath())</span>
+<span class="nc" id="L272">        .append(this.openIDauthenticationUrl).append(&quot;' method='POST'&gt;\n&quot;);</span>
+<span class="nc" id="L273">      sb.append(&quot;&lt;table&gt;\n&quot;);</span>
+<span class="nc" id="L274">      sb.append(&quot;    &lt;tr&gt;&lt;td&gt;Identity:&lt;/td&gt;&lt;td&gt;&lt;input type='text' size='30' name='&quot;);</span>
+<span class="nc" id="L275">      sb.append(this.openIDusernameParameter).append(&quot;'/&gt;&lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+
+<span class="nc bnc" id="L277" title="All 2 branches missed.">      if (this.openIDrememberMeParameter != null) {</span>
+<span class="nc" id="L278">        sb.append(&quot;    &lt;tr&gt;&lt;td&gt;&lt;input type='checkbox' name='&quot;)</span>
+<span class="nc" id="L279">          .append(this.openIDrememberMeParameter)</span>
+<span class="nc" id="L280">          .append(&quot;'&gt;&lt;/td&gt;&lt;td&gt;Remember me on this computer.&lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+      }
+
+<span class="nc" id="L283">      sb.append(&quot;    &lt;tr&gt;&lt;td colspan='2'&gt;\n&quot;)</span>
+<span class="nc" id="L284">        .append(&quot;        &lt;input name=\&quot;submit\&quot; type=\&quot;submit\&quot; value=\&quot;Login\&quot; /&gt;\n&quot;)</span>
+<span class="nc" id="L285">        .append(&quot;    &lt;/td&gt;&lt;/tr&gt;\n&quot;);</span>
+<span class="nc" id="L286">      sb.append(&quot;&lt;/table&gt;\n&quot;);</span>
+<span class="nc" id="L287">      childRenderHiddenInputs(sb, request);</span>
+<span class="nc" id="L288">      sb.append(&quot;&lt;/form&gt;&quot;);</span>
+    }
+
+    // RSA password encrypt
+<span class="nc bnc" id="L292" title="All 2 branches missed.">    if (this.jsencrypt != null) {</span>
+<span class="nc" id="L293">      sb.append(&quot;&lt;script type='text/javascript'&gt;\n&quot;).append(this.jsencrypt).append(&quot;\n&lt;/script&gt;\n&quot;);</span>
+    } else {
+<span class="nc" id="L295">      sb.append(&quot;&lt;script type='text/javascript' src='js/jsencrypt-2.3.1.min.js'&gt;&lt;/script&gt;&quot;); //</span>
+    }
+<span class="nc" id="L297">    sb.append(&quot;&lt;script type='text/javascript'&gt;\n&quot;) //</span>
+<span class="nc" id="L298">      .append(&quot;    function onClick() {\n&quot;) //</span>
+<span class="nc" id="L299">      .append(&quot;        var input = document.getElementsByName(\&quot;&quot;).append(this.passwordParameter).append(&quot;\&quot;)[0];&quot;) //</span>
+<span class="nc" id="L300">      .append(&quot;\n&quot;) //</span>
+<span class="nc" id="L301">      .append(&quot;        var plaintext = input.value;\n&quot;) //</span>
+<span class="nc" id="L302">      .append(&quot;        if (! plaintext) {return false;}\n&quot;) //</span>
+<span class="nc" id="L303">      .append(&quot;        if (plaintext.startsWith('&quot;).append(ENCRYPTED_FIELD_PREFIX).append(&quot;')) {return true;}\n\n&quot;) //</span>
+<span class="nc" id="L304">      .append(&quot;        console.log('plaintext:' + plaintext);\n&quot;) //</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">      .append(&quot;        var rsaPublicKey='&quot;).append(isNotBlank(this.rsaPublicKey) ? this.rsaPublicKey : &quot;&quot;) //</span>
+<span class="nc" id="L306">      .append(&quot;';\n&quot;) //</span>
+<span class="nc" id="L307">      .append(&quot;        if (! rsaPublicKey) {return true;}\n&quot;) //</span>
+<span class="nc" id="L308">      .append(&quot;        var encrypt = new JSEncrypt();\n&quot;) //</span>
+<span class="nc" id="L309">      .append(&quot;        encrypt.setPublicKey(rsaPublicKey);\n&quot;) //</span>
+<span class="nc" id="L310">      .append(&quot;        var encrypted = encrypt.encrypt(plaintext);\n&quot;) //</span>
+<span class="nc" id="L311">      .append(&quot;        var result = '&quot;).append(ENCRYPTED_FIELD_PREFIX).append(&quot;' + encrypted;\n&quot;) //</span>
+<span class="nc" id="L312">      .append(&quot;        input.value = result;\n&quot;)</span>
+<span class="nc" id="L313">      .append(&quot;        console.log('result:' + input.value);\n&quot;) //</span>
+<span class="nc" id="L314">      .append(&quot;        if (encrypted) {return true;} else {return false;}\n&quot;) //</span>
+<span class="nc" id="L315">      .append(&quot;    }\n&quot;) //</span>
+<span class="nc" id="L316">      .append(&quot;    function onSubmit() {return true;}\n&quot;) //</span>
+<span class="nc" id="L317">      .append(&quot;&lt;/script&gt;\n&quot;);</span>
+<span class="nc" id="L318">    sb.append(&quot;&lt;/body&gt;&lt;/html&gt;&quot;);</span>
+
+<span class="nc" id="L320">    return sb.toString();</span>
+  }
+
+  private void childRenderHiddenInputs(StringBuilder sb, HttpServletRequest request) {
+<span class="nc" id="L324">    final CsrfToken token = (CsrfToken) request.getAttribute(CsrfToken.class.getName());</span>
+<span class="nc bnc" id="L325" title="All 2 branches missed.">    if (token != null) {</span>
+<span class="nc" id="L326">      sb.append(&quot;    &lt;input name=\&quot;&quot;).append(token.getParameterName()) //</span>
+<span class="nc" id="L327">        .append(&quot;\&quot; type=\&quot;hidden\&quot; value=\&quot;&quot;).append(token.getToken()) //</span>
+<span class="nc" id="L328">        .append(&quot;\&quot; /&gt;\n&quot;);</span>
+    }
+<span class="nc" id="L330">  }</span>
+
+  private boolean childIsLogoutSuccess(HttpServletRequest request) {
+<span class="nc bnc" id="L333" title="All 4 branches missed.">    return this.logoutSuccessUrl != null &amp;&amp; childMatches(request, this.logoutSuccessUrl);</span>
+  }
+
+  private boolean childIsLoginUrlRequest(HttpServletRequest request) {
+<span class="nc bnc" id="L337" title="All 2 branches missed.">    final String url = request.getQueryString() != null ? //</span>
+<span class="nc" id="L338">      this.loginPageUrl + &quot;?&quot; + request.getQueryString() : this.loginPageUrl;</span>
+<span class="nc" id="L339">    return childMatches(request, url);</span>
+  }
+
+  private boolean childIsErrorPage(HttpServletRequest request) {
+<span class="nc" id="L343">    return childMatches(request, this.failureUrl);</span>
+  }
+
+  private boolean childMatches(final HttpServletRequest request, final String url) {
+<span class="nc bnc" id="L347" title="All 4 branches missed.">    if (!&quot;GET&quot;.equals(request.getMethod()) || url == null) {</span>
+<span class="nc" id="L348">      return false;</span>
+    }
+<span class="nc" id="L350">    String uri = request.getRequestURI();</span>
+<span class="nc" id="L351">    int pathParamIndex = uri.indexOf(';');</span>
+
+<span class="nc bnc" id="L353" title="All 2 branches missed.">    if (pathParamIndex &gt; 0) {</span>
+      // strip everything after the first semi-colon
+<span class="nc" id="L355">      uri = uri.substring(0, pathParamIndex);</span>
+    }
+
+<span class="nc bnc" id="L358" title="All 2 branches missed.">    if (request.getQueryString() != null) {</span>
+<span class="nc" id="L359">      uri += &quot;?&quot; + request.getQueryString();</span>
+    }
+
+<span class="nc bnc" id="L362" title="All 2 branches missed.">    if (&quot;&quot;.equals(request.getContextPath())) {</span>
+<span class="nc" id="L363">      return uri.equals(url);</span>
+    }
+
+<span class="nc" id="L366">    final String urlWithContextPath = request.getContextPath() + url;</span>
+<span class="nc" id="L367">    return uri.equals(urlWithContextPath);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,24 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./UserDetails.html" title="com.yirendai.oss.lib.security.api.UserDetails" alt="" coords="95,768,204,845"/>
+<area shape="rect" id="node1" href="./UserDetails.html" title="&lt;TABLE&gt;" alt="" coords="84,763,215,851"/>
+<area shape="rect" id="node2_1" href="./GenericUser.html" title="com.yirendai.oss.lib.security.api.GenericUser" alt="" coords="329,28,695,313"/>
+<area shape="rect" id="node2" href="./GenericUser.html" title="&lt;TABLE&gt;" alt="" coords="318,23,706,319"/>
+<area shape="rect" id="node3_2" href="./AbstractStaticPrivilege.html" title="com.yirendai.oss.lib.security.api.AbstractStaticPrivilege" alt="" coords="923,511,1096,588"/>
+<area shape="rect" id="node3" href="./AbstractStaticPrivilege.html" title="&lt;TABLE&gt;" alt="" coords="912,505,1107,593"/>
+<area shape="rect" id="node4_3" href="./User.html" title="com.yirendai.oss.lib.security.api.User" alt="" coords="16,80,283,261"/>
+<area shape="rect" id="node4" href="./User.html" title="&lt;TABLE&gt;" alt="" coords="5,75,293,267"/>
+<area shape="rect" id="node10_4" href="./AbstractUser.html" title="com.yirendai.oss.lib.security.api.AbstractUser" alt="" coords="26,389,273,709"/>
+<area shape="rect" id="node10" href="./AbstractUser.html" title="&lt;TABLE&gt;" alt="" coords="15,384,283,715"/>
+<area shape="rect" id="node5_5" href="./VerifyCodeProvider.html" title="com.yirendai.oss.lib.security.api.VerifyCodeProvider" alt="" coords="1520,115,1808,227"/>
+<area shape="rect" id="node5" href="./VerifyCodeProvider.html" title="&lt;TABLE&gt;" alt="" coords="1509,109,1819,232"/>
+<area shape="rect" id="node6_6" href="./Security.html" title="com.yirendai.oss.lib.security.api.Security" alt="" coords="1854,115,2095,227"/>
+<area shape="rect" id="node6" href="./Security.html" title="&lt;TABLE&gt;" alt="" coords="1843,109,2106,232"/>
+<area shape="rect" id="node7_7" href="./BaseUserDetailsAuthenticationProvider.html" title="com.yirendai.oss.lib.security.api.BaseUserDetailsAuthenticationProvider" alt="" coords="2141,11,2849,331"/>
+<area shape="rect" id="node7" href="./BaseUserDetailsAuthenticationProvider.html" title="&lt;TABLE&gt;" alt="" coords="2130,5,2859,336"/>
+<area shape="rect" id="node8_8" href="./StaticPrivilege.html" title="com.yirendai.oss.lib.security.api.StaticPrivilege" alt="" coords="741,89,1107,253"/>
+<area shape="rect" id="node8" href="./StaticPrivilege.html" title="&lt;TABLE&gt;" alt="" coords="731,83,1117,258"/>
+<area shape="rect" id="node9_9" href="./AbstractRole.html" title="com.yirendai.oss.lib.security.api.AbstractRole" alt="" coords="1228,485,1399,614"/>
+<area shape="rect" id="node9" href="./AbstractRole.html" title="&lt;TABLE&gt;" alt="" coords="1217,479,1409,619"/>
+<area shape="rect" id="node11_10" href="./AbstractGrantedAuthority.html" title="com.yirendai.oss.lib.security.api.AbstractGrantedAuthority" alt="" coords="1152,97,1475,244"/>
+<area shape="rect" id="node11" href="./AbstractGrantedAuthority.html" title="&lt;TABLE&gt;" alt="" coords="1141,92,1485,249"/>
+</map>
