@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./AfterOperationBuilderBuildPlugin.html" title="com.yirendai.oss.lib.security.swagger.AfterOperationBuilderBuildPlugin" alt="" coords="16,45,341,157"/>
+<area shape="rect" id="node1" href="./AfterOperationBuilderBuildPlugin.html" title="&lt;TABLE&gt;" alt="" coords="5,40,352,163"/>
+<area shape="rect" id="node2_1" href="./SecurityApiDocumentationPlugin.html" title="com.yirendai.oss.lib.security.swagger.SecurityApiDocumentationPlugin" alt="" coords="387,11,984,192"/>
+<area shape="rect" id="node2" href="./SecurityApiDocumentationPlugin.html" title="&lt;TABLE&gt;" alt="" coords="376,5,995,197"/>
+<area shape="rect" id="node3_2" href="./BasicAuthHeaderBuilderPlugin.html" title="com.yirendai.oss.lib.security.swagger.BasicAuthHeaderBuilderPlugin" alt="" coords="1029,45,1355,157"/>
+<area shape="rect" id="node3" href="./BasicAuthHeaderBuilderPlugin.html" title="&lt;TABLE&gt;" alt="" coords="1019,40,1365,163"/>
+<area shape="rect" id="node4_3" href="./AuthenticationTokenHeaderBuilderPlugin.html" title="com.yirendai.oss.lib.security.swagger.AuthenticationTokenHeaderBuilderPlugin" alt="" coords="1400,45,1725,157"/>
+<area shape="rect" id="node4" href="./AuthenticationTokenHeaderBuilderPlugin.html" title="&lt;TABLE&gt;" alt="" coords="1389,40,1736,163"/>
+<area shape="rect" id="node5_4" href="./SecurityApiListingPlugin.html" title="com.yirendai.oss.lib.security.swagger.SecurityApiListingPlugin" alt="" coords="1771,37,2165,166"/>
+<area shape="rect" id="node5" href="./SecurityApiListingPlugin.html" title="&lt;TABLE&gt;" alt="" coords="1760,31,2176,171"/>
+</map>
