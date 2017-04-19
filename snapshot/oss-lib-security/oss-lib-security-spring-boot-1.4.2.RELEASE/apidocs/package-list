@@ -1,0 +1,12 @@
+com.yirendai.oss.lib.security
+com.yirendai.oss.lib.security.api
+com.yirendai.oss.lib.security.crypto
+com.yirendai.oss.lib.security.internal
+com.yirendai.oss.lib.security.internal.feign
+com.yirendai.oss.lib.security.internal.preauth
+com.yirendai.oss.lib.security.internal.rest
+com.yirendai.oss.lib.security.internal.template
+com.yirendai.oss.lib.security.internal.zuul
+com.yirendai.oss.lib.security.starter
+com.yirendai.oss.lib.security.swagger
+org.springframework.security.config.annotation.web.configurers
