@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./CompositeExceptionResolverFactoryBean.html" title="com.yirendai.oss.lib.errorhandle.starter.CompositeExceptionResolverFactoryBean" alt="" coords="15,89,345,218"/>
+<area shape="rect" id="node1" href="./CompositeExceptionResolverFactoryBean.html" title="&lt;TABLE&gt;" alt="" coords="5,83,355,223"/>
+<area shape="rect" id="node2_1" href="./ExceptionResolverConfiguration.html" title="com.yirendai.oss.lib.errorhandle.starter.ExceptionResolverConfiguration" alt="" coords="391,106,799,201"/>
+<area shape="rect" id="node2" href="./ExceptionResolverConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="380,101,809,206"/>
+<area shape="rect" id="node3_2" href="./ErrorHandleAutoConfiguration.html" title="com.yirendai.oss.lib.errorhandle.starter.ErrorHandleAutoConfiguration" alt="" coords="844,11,1625,296"/>
+<area shape="rect" id="node3" href="./ErrorHandleAutoConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="833,5,1636,301"/>
+<area shape="rect" id="node4_3" href="./ExceptionHandlerConfiguration.html" title="com.yirendai.oss.lib.errorhandle.starter.ExceptionHandlerConfiguration" alt="" coords="1671,89,2033,218"/>
+<area shape="rect" id="node4" href="./ExceptionHandlerConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="1660,83,2044,223"/>
+</map>

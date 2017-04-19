@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./DefaultExceptionResolver.html" title="com.yirendai.oss.lib.errorhandle.internal.resolver.DefaultExceptionResolver" alt="" coords="15,28,209,105"/>
+<area shape="rect" id="node1" href="./DefaultExceptionResolver.html" title="&lt;TABLE&gt;" alt="" coords="5,23,219,111"/>
+<area shape="rect" id="node2_1" href="./HttpMediaTypeNotSupportedExceptionResolver.html" title="com.yirendai.oss.lib.errorhandle.internal.resolver.HttpMediaTypeNotSupportedExceptionResolver" alt="" coords="255,19,1049,114"/>
+<area shape="rect" id="node2" href="./HttpMediaTypeNotSupportedExceptionResolver.html" title="&lt;TABLE&gt;" alt="" coords="244,14,1060,119"/>
+<area shape="rect" id="node3_2" href="./MethodArgumentNotValidExceptionResolver.html" title="com.yirendai.oss.lib.errorhandle.internal.resolver.MethodArgumentNotValidExceptionResolver" alt="" coords="1095,19,1699,114"/>
+<area shape="rect" id="node3" href="./MethodArgumentNotValidExceptionResolver.html" title="&lt;TABLE&gt;" alt="" coords="1085,14,1710,119"/>
+<area shape="rect" id="node4_3" href="./ApplicationErrorExceptionResolver.html" title="com.yirendai.oss.lib.errorhandle.internal.resolver.ApplicationErrorExceptionResolver" alt="" coords="1745,11,2647,123"/>
+<area shape="rect" id="node4" href="./ApplicationErrorExceptionResolver.html" title="&lt;TABLE&gt;" alt="" coords="1734,5,2658,128"/>
+<area shape="rect" id="node5_4" href="./HttpRequestMethodNotSupportedExceptionResolver.html" title="com.yirendai.oss.lib.errorhandle.internal.resolver.HttpRequestMethodNotSupportedExceptionResolver" alt="" coords="2693,19,3515,114"/>
+<area shape="rect" id="node5" href="./HttpRequestMethodNotSupportedExceptionResolver.html" title="&lt;TABLE&gt;" alt="" coords="2682,14,3526,119"/>
+<area shape="rect" id="node6_5" href="./ConstraintViolationExceptionResolver.html" title="com.yirendai.oss.lib.errorhandle.internal.resolver.ConstraintViolationExceptionResolver" alt="" coords="3561,19,4127,114"/>
+<area shape="rect" id="node6" href="./ConstraintViolationExceptionResolver.html" title="&lt;TABLE&gt;" alt="" coords="3551,14,4137,119"/>
+</map>
