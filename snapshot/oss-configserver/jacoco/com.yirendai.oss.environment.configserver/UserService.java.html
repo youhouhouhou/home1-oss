@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">com.yirendai.oss.environment.configserver</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.yirendai.oss.environment.configserver;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkState;
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.stream.Collectors.toList;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
+import com.google.common.collect.ImmutableMap;
+
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
+
+@Service
+<span class="nc" id="L29">@Slf4j</span>
+<span class="nc" id="L30">public class UserService {</span>
+
+<span class="nc" id="L32">  @Setter</span>
+  private PasswordEncoder passwordEncoder;
+<span class="nc" id="L34">  @Setter</span>
+  private JdbcUserDetailsManager userDetailsManager;
+
+  public List&lt;Map&lt;String, String&gt;&gt; getUsers() {
+<span class="nc" id="L38">    final List&lt;String&gt; users = this.userDetailsManager.findUsersInGroup(Security.ROLE_USER);</span>
+<span class="nc" id="L39">    return users.stream() //</span>
+<span class="nc" id="L40">        .map(modifiedUsername -&gt; ImmutableMap.of( //</span>
+            &quot;username&quot;, Security.USER_USER, //
+<span class="nc" id="L42">            &quot;application&quot;, Security.restoreUsername(modifiedUsername) //</span>
+        )) //
+<span class="nc" id="L44">        .collect(toList());</span>
+  }
+
+  @Transactional
+  public void createUser(final String application, final String username, final String password) {
+<span class="nc" id="L49">    final String name = Security.modifyUsername(application, username);</span>
+<span class="nc" id="L50">    checkArgument(isNotBlank(password), &quot;password should not blank&quot;);</span>
+
+<span class="nc" id="L52">    final List&lt;GrantedAuthority&gt; authorities = newArrayList(new SimpleGrantedAuthority(Security.ROLE_USER));</span>
+<span class="nc" id="L53">    final User user = new User(name, this.passwordEncoder.encode(password), authorities);</span>
+<span class="nc" id="L54">    this.userDetailsManager.createUser(user);</span>
+<span class="nc" id="L55">    this.userDetailsManager.addUserToGroup(name, Security.ROLE_USER);</span>
+<span class="nc" id="L56">  }</span>
+
+  @Transactional
+  public void deleteUser(final String application, final String username, final Boolean checkExists) {
+<span class="nc" id="L60">    final String name = Security.modifyUsername(application, username);</span>
+<span class="nc bnc" id="L61" title="All 4 branches missed.">    checkState(this.userDetailsManager.userExists(name) || !checkExists, &quot;user %s not exists.&quot;, username);</span>
+
+<span class="nc" id="L63">    this.userDetailsManager.removeUserFromGroup(name, Security.ROLE_USER);</span>
+<span class="nc" id="L64">    this.userDetailsManager.deleteUser(name);</span>
+<span class="nc" id="L65">  }</span>
+
+  public UserDetails getUser(final String application, final String username) {
+<span class="nc" id="L68">    final String name = Security.modifyUsername(application, username);</span>
+<span class="nc" id="L69">    checkState(this.userDetailsManager.userExists(name), &quot;user %s not exists.&quot;, username);</span>
+
+<span class="nc" id="L71">    final UserDetails userDetails = this.userDetailsManager.loadUserByUsername(name);</span>
+<span class="nc" id="L72">    final User user = new User(username, userDetails.getPassword(), userDetails.getAuthorities());</span>
+<span class="nc" id="L73">    user.eraseCredentials();</span>
+<span class="nc" id="L74">    return user;</span>
+  }
+
+  @Transactional
+  public void updateUser(final String application, final String username, final String password) {
+<span class="nc" id="L79">    final String name = Security.modifyUsername(application, username);</span>
+<span class="nc" id="L80">    checkArgument(isNotBlank(password), &quot;password should not blank&quot;);</span>
+<span class="nc" id="L81">    checkState(this.userDetailsManager.userExists(name), &quot;user %s not exists.&quot;, username);</span>
+
+<span class="nc" id="L83">    final List&lt;GrantedAuthority&gt; authorities = newArrayList(new SimpleGrantedAuthority(Security.ROLE_USER));</span>
+<span class="nc" id="L84">    final User user = new User(name, this.passwordEncoder.encode(password), authorities);</span>
+<span class="nc" id="L85">    this.userDetailsManager.updateUser(user);</span>
+<span class="nc" id="L86">  }</span>
+
+  public Boolean authenticateUser(final String application) {
+<span class="nc" id="L89">    final Authentication currentUser = SecurityContextHolder.getContext().getAuthentication();</span>
+<span class="nc" id="L90">    final String name = currentUser.getName();</span>
+
+<span class="nc" id="L92">    final UserDetails userDetails = this.userDetailsManager.loadUserByUsername(name);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">    final Boolean result = userDetails != null;</span>
+
+<span class="nc" id="L95">    log.info(&quot;current user {} {} has application {}'s read permission.&quot;, //</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        currentUser.getName(), result ? &quot;&quot; : &quot;no&quot;, application);</span>
+
+<span class="nc" id="L98">    return result;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

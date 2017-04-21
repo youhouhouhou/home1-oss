@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConfigHealthIndicator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">com.yirendai.oss.environment.configserver</a> &gt; <span class="el_source">ConfigHealthIndicator.java</span></div><h1>ConfigHealthIndicator.java</h1><pre class="source lang-java linenums">package com.yirendai.oss.environment.configserver;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.cloud.config.environment.Environment;
+import org.springframework.cloud.config.server.environment.EnvironmentRepository;
+import org.springframework.stereotype.Component;
+
+/**
+ * 配置中心启动健康检查,查看common配置是否可读.
+ */
+<span class="nc" id="L16">@Slf4j</span>
+@Component
+<span class="nc" id="L18">public class ConfigHealthIndicator implements HealthIndicator {</span>
+  @Autowired
+  private EnvironmentRepository repository;
+
+  @Value(&quot;${spring.cloud.config.server.common-config.application}&quot;)
+  private String application;
+  //  @Value(&quot;${spring.cloud.config.server.defaultProfile}&quot;)
+<span class="nc" id="L25">  private String profile = &quot;default&quot;;</span>
+  @Value(&quot;${spring.cloud.config.server.common-config.label}&quot;)
+  private String label;
+
+  @Override
+  public Health health() {
+<span class="nc" id="L31">    Health.Builder builder = new Health.Builder().withDetail(&quot;application&quot;, this.application)</span>
+<span class="nc" id="L32">        .withDetail(&quot;profile&quot;, this.profile).withDetail(&quot;label&quot;, this.label).unknown();</span>
+    try {
+<span class="nc" id="L34">      check();</span>
+<span class="nc" id="L35">      builder.up();</span>
+<span class="nc" id="L36">    } catch (final Exception ex) {</span>
+<span class="nc" id="L37">      log.warn(&quot;read common config {} error:{}&quot;, getEnvStr(), ex);</span>
+<span class="nc" id="L38">      builder.down().withException(ex);</span>
+<span class="nc" id="L39">    }</span>
+
+<span class="nc" id="L41">    return builder.build();</span>
+  }
+
+  private void check() {
+<span class="nc" id="L45">    final Environment environment = this.repository.findOne(this.application, this.profile, this.label);</span>
+<span class="nc" id="L46">    log.info(&quot;read common config:{},environment:{}&quot;, getEnvStr(), environment.toString());</span>
+<span class="nc" id="L47">  }</span>
+
+  private String getEnvStr() {
+<span class="nc" id="L50">    return &quot;application:&quot; + this.application + &quot;,profile:&quot; + this.profile + &quot;,label:&quot; + this.label;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReverseDns.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">com.yirendai.oss.environment.configserver</a> &gt; <span class="el_source">ReverseDns.java</span></div><h1>ReverseDns.java</h1><pre class="source lang-java linenums">package com.yirendai.oss.environment.configserver;
+
+import static lombok.AccessLevel.PRIVATE;
+
+import lombok.NoArgsConstructor;
+
+import org.xbill.DNS.DClass;
+import org.xbill.DNS.ExtendedResolver;
+import org.xbill.DNS.Message;
+import org.xbill.DNS.Name;
+import org.xbill.DNS.Record;
+import org.xbill.DNS.Resolver;
+import org.xbill.DNS.ReverseMap;
+import org.xbill.DNS.Section;
+import org.xbill.DNS.Type;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+/**
+ * Reverse DNS resolve.
+ * see: http://archive.oreilly.com/pub/post/reverse_dns_lookup_and_java.html
+ * Created by zhanghaolun on 16/11/2.
+ */
+<span class="nc" id="L26">@NoArgsConstructor(access = PRIVATE)</span>
+public abstract class ReverseDns {
+
+  public static String reverseSystemDns(final String hostIp) throws UnknownHostException {
+<span class="nc" id="L30">    final InetAddress addr = InetAddress.getByName(hostIp);</span>
+<span class="nc" id="L31">    return addr.getHostName(); // getCanonicalHostName()</span>
+  }
+
+  public static String reverseJavaDns(final String hostIp) throws IOException {
+    //final Record opt = null;
+<span class="nc" id="L36">    final Resolver resolver = new ExtendedResolver();</span>
+<span class="nc" id="L37">    final Name name = ReverseMap.fromAddress(hostIp);</span>
+<span class="nc" id="L38">    final int type = Type.PTR;</span>
+<span class="nc" id="L39">    final int dclass = DClass.IN;</span>
+<span class="nc" id="L40">    final Record rec = Record.newRecord(name, type, dclass);</span>
+<span class="nc" id="L41">    final Message query = Message.newQuery(rec);</span>
+
+<span class="nc" id="L43">    final Message response = resolver.send(query);</span>
+<span class="nc" id="L44">    final Record[] answers = response.getSectionArray(Section.ANSWER);</span>
+
+    final String result;
+<span class="nc bnc" id="L47" title="All 2 branches missed.">    if (answers.length == 0) {</span>
+<span class="nc" id="L48">      result = hostIp;</span>
+    } else {
+<span class="nc" id="L50">      result = answers[0].rdataToString();</span>
+    }
+<span class="nc" id="L52">    return result;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstraceNotificationExtractor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">com.yirendai.oss.environment.configserver</a> &gt; <span class="el_source">AbstraceNotificationExtractor.java</span></div><h1>AbstraceNotificationExtractor.java</h1><pre class="source lang-java linenums">package com.yirendai.oss.environment.configserver;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.config.monitor.PropertyPathNotificationExtractor;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 2017/1/17 yanzhang153
+ */
+<span class="fc" id="L15">public abstract class AbstraceNotificationExtractor implements PropertyPathNotificationExtractor {</span>
+<span class="fc" id="L16">  private static final Pattern PATH_PATTERN = Pattern.compile(&quot;^(https?)://(.+)/(.*)/commit/[a-zA-Z0-9]{7,40}&quot;);</span>
+
+  @Value(&quot;${spring.cloud.config.server.common-config.application}&quot;)
+  private String commonApplicationName;
+
+  protected void addAllPaths(final Set&lt;String&gt; paths, final Map&lt;String, Object&gt; commit, final String name) {
+    //example:
+    //http://gitlab.internal/configserver/oss-todomvc-app-config/commit/929f67f2b38a6269e7ad63f606c9d89a7d8eb79f
+<span class="fc" id="L24">    final String url = (String) commit.get(&quot;url&quot;);</span>
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">    if (StringUtils.isNotBlank(url)) {</span>
+<span class="fc" id="L26">      final Matcher matcher = PATH_PATTERN.matcher(url);</span>
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">      if (matcher.matches()) {</span>
+<span class="fc" id="L28">        final String repository = matcher.group(3);</span>
+<span class="fc" id="L29">        final int lastIndex = repository.lastIndexOf('-');</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">        if (lastIndex &gt; 0) {</span>
+<span class="fc" id="L31">          final String application = repository.substring(0, lastIndex);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">          if (commonApplicationName.equals(application)) {</span>
+<span class="fc" id="L33">            paths.add(&quot;application&quot;);</span>
+          } else {
+<span class="fc" id="L35">            paths.add(application);</span>
+          }
+        }
+      }
+    }
+<span class="fc" id="L40">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
