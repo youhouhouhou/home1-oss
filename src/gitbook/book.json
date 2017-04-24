@@ -1,0 +1,19 @@
+{
+  "author": "张浩伦 Haolun Zhang",
+  "title": "宜人贷开源技术栈",
+  "language": "zh-hans",
+  "direction": "ltr",
+  "gitbook": ">= 1.0.1",
+  "pdf": {
+  	"fontSize": 8,
+  	"fontFamily": "Arial",
+    "pageNumbers": true,
+    "paperSize": "a4",
+    "margin": {
+      "top": 56,
+      "bottom": 56,
+      "right": 56,
+      "left": 56
+    }
+  }
+}

@@ -1,0 +1,207 @@
+= GIT FLOW 命令指南
+Author <zechengzhao@yirendai.com>
+v1.0, 2017-1-16
+:toc: right
+
+== 安装
+=== Linux
+==== Debian or Ubuntu
+
+----
+sudo apt install git-flow
+----
+
+==== Fedora  
+
+----
+yum install gitflow
+----
+
+NOTE: Also For CentOS/Redhat, you can find this RPM using the EPEL repo.
+
+==== Other Linux
+
+----
+curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
+chmod +x gitflow-installer.sh
+sudo ./gitflow-installer.sh
+----
+
+=== Windows
+
+在 ``Cygwin`` 下通过如下命令安装。
+
+[source, bash]
+----
+wget -q -O - --no-check-certificate https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | bash
+----
+
+=== MAC
+==== Homebrew 
+
+----
+brew install gitflow
+----
+
+==== wget 
+
+----
+wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/contrib/gitflow-installer.sh | sudo bash
+----
+
+==== curl 
+
+----
+curl -L -O https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh
+sudo bash gitflow-installer.sh
+----
+
+== 使用
+
+IMPORTANT: 本地必须包含``master``和``develop``分支，如果没有，可以使用 ``git checkout -b ${branch} origin/${branch}``命令创建。
+
+=== 初始化仓库
+
+使用git flow管理分支模型之前，需要先初始化仓库，设置一些基本的参数。支持两种初始化方式：
+交互式和静默方式。
+
+==== 交互式
+
+交互式初始化的过程中会询问相关问题，建议按照默认值进行。只在最后设置 hooks 和 filters 目录的时候，使用自定义目录即可。简单演示如下。
+
+----
+$ git flow init 
+
+Which branch should be used for bringing forth production releases?
+   - develop
+   - master
+Branch name for production releases: [master] 
+
+Which branch should be used for integration of the "next release"?
+   - develop
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] 
+Hooks and filters directory? [~/common-config/.git/hooks] hooks  
+----
+
+[NOTE]
+====
+[red]#为使git hooks可以远程共享，修改hooks目录为项目根下的 hooks 目录。#
+====
+
+==== 静默方式
+
+* ``git flow init -d``，在init的时候加入``-d``参数，表示所有的设置使用默认方式。
+* 使用默认参数之后，需要设置 gitflow 的 hooks 和 filters 目录。打开 ``.git/config``文件，找到``[gitflow "path"]``的设置，修改为如下内容：
+
+    ----
+    [gitflow "path"]
+        hooks = hooks
+    ----
+
+[NOTE]
+====
+还有一种初始化方式，直接写 .git/config 文件，在文件中追加如下内容：
+----
+[gitflow "branch"]
+	master = master
+	develop = develop
+[gitflow "prefix"]
+	feature = feature/
+	bugfix = bugfix/
+	release = release/
+	hotfix = hotfix/
+	support = support/
+	versiontag = 
+[gitflow "path"]
+	hooks = hooks
+----
+
+使用命令的方式足够简单，建议使用 ``git flow init`` 命令来执行。
+====
+
+=== 分支操作
+
+==== feature 分支操作
+
+feature分支用于新特性开发。
+
+**基本操作**
+
+====
+git flow feature  [red]#_查看feature分支列表_# +
+git flow feature start <name> [<base>]   [red]#start feature 分支# +
+git flow feature finish <name>  [red]#finish feature 分支# +
+====
+
+[NOTE]
+====
+<base> 参数为可选项。如果有，必须为 [big red]#develop# 分支的某次 commit.
+====
+
+**push 和 pull**
+
+====
+git flow feature publish <name>  [red]#push到远程分支# +
+git flow feature pull <remote> <name>  [red]#从远程分支pull#
+====
+
+==== release 分支操作
+
+release 分支用于发布版本。
+
+====
+git flow release +
+git flow release start <release> [<base>] +
+git flow release finish <release> +
+====
+
+[NOTE]
+====
+<base> 参数为可选项。如果有，必须为 [big red]#develop# 分支的某次 commit.
+====
+
+==== hotfix 分支操作
+
+hotfix分支用于紧急bug修复。
+
+==== 
+git flow hotfix +
+git flow hotfix start <release> [<base>] +
+git flow hotfix finish <release> +
+====
+
+[NOTE]
+====
+<base> 参数为可选项。如果有，必须为 [big red]#master# 分支的某次 commit.
+====
+
+==== support 分支操作
+
+====
+git flow support +
+git flow support start <release> <base> +
+====
+
+[NOTE]
+====
+<base> 参数为可选项。如果有，必须为 [big red]#master# 分支的某次 commit.
+====
+
+== 其他
+
+* git flow feature/release/hotfix/support start 会根据设置，基于对应的分支创建新分支，比如 feature/release分支是基于本地的 develop 分支创建，support/hotfix 基于本地的master分支创建。
+* git flow feature/release/hotfix/support finish 会将本地的分支合并回对应的分支，比如 feature/release 分支合并回develop，hotfix/support 合并回master；然后将之前创建的本地分支删除。
+* 使用gitflow命令不同于使用maven gitflow插件。它不会修改pom文件中的项目版本等信息。
+
+== REFERENCES
+
+. https://github.com/nvie/gitflow[github地址]
+. http://mvn-site.internal/oss-develop/gitbook/docs/oss/GITFLOW.html[oss的分支模型]

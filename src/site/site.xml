@@ -1,0 +1,45 @@
+<project>
+
+    <bannerLeft>
+        <name>${project.name}</name>
+    </bannerLeft>
+
+    <!--
+    https://maven.apache.org/plugins/maven-site-plugin/examples/sitedescriptor.html
+    https://maven.apache.org/skins/index.html
+    http://maven.apache.org/skins/maven-fluido-skin/
+    https://github.com/apache/maven-skins/blob/trunk/maven-fluido-skin/src/site/site.xml
+    -->
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.5</version>
+    </skin>
+
+    <custom>
+        <fluidoSkin>
+            <topBarEnabled>true</topBarEnabled>
+            <sideBarEnabled>true</sideBarEnabled>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+        </fluidoSkin>
+    </custom>
+    <body>
+        <menu ref="parent" />
+        <menu name="DOCUMENTATION">
+            <item href="README.html" name="README" />
+            <item href="INTRODUCTION.html" name="oss-doc" />
+            <item href="CONTRIBUTION.html" name="如何构建oss-doc或贡献代码文档" />
+            <item href="CODESTYLE.html" name="oss的代码规范" />
+            <item href="GITBOOK.html" name="如何构建oss的gitbook" />
+            <item href="GITFLOW.html" name="oss的分支模型" />
+            <item href="GITINSPECT.html" name="各个开发者对项目的贡献" />
+            <item href="MVNSITE.html" name="如何使用oss为项目构建网站" />
+            <item href="SONARQUBE.html" name="使用sonarqube评估代码质量" />
+            <item href="THINGS_SHOULD_KNOW.html" name="oss开发者和用户应该知道的n件事" />
+            <item href="REFS.html" name="参考文献" />
+        </menu>
+        <menu ref="modules" />
+        <!--menu ref="reports" /-->
+        <menu ref="reports" inherit="bottom" />
+    </body>
+</project>
