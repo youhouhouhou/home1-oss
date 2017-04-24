@@ -26,12 +26,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
   @Override
   protected void configure(HttpSecurity http) throws Exception {
 
-    /**
-     * Below config is a temporary solution to protect management endpoints.
-     */
-<span class="fc" id="L32">    http</span>
-<span class="fc" id="L33">        .authorizeRequests()</span>
-<span class="fc" id="L34">        .antMatchers( //</span>
+    // Below config is a temporary solution to protect management endpoints.
+<span class="fc" id="L30">    http</span>
+<span class="fc" id="L31">        .authorizeRequests()</span>
+<span class="fc" id="L32">        .antMatchers( //</span>
             &quot;/health&quot;, //
             &quot;/env&quot;, //
             &quot;/metrics&quot;, //
@@ -41,37 +39,37 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
             &quot;/beans&quot;, //
             &quot;/trace&quot; //
         )
-<span class="fc" id="L44">        .fullyAuthenticated().and()</span>
-<span class="fc" id="L45">        .httpBasic();</span>
+<span class="fc" id="L42">        .fullyAuthenticated().and()</span>
+<span class="fc" id="L43">        .httpBasic();</span>
 
-<span class="fc" id="L47">    http</span>
-<span class="fc" id="L48">      .csrf().disable()</span>
-<span class="fc" id="L49">      .authorizeRequests()</span>
-<span class="fc" id="L50">        .antMatchers(&quot;/&quot;, &quot;/index.html&quot;).hasRole(USER_ROLE_NAME)</span>
-<span class="fc" id="L51">        .antMatchers(&quot;/api/applications/**/env&quot;,</span>
+<span class="fc" id="L45">    http</span>
+<span class="fc" id="L46">      .csrf().disable()</span>
+<span class="fc" id="L47">      .authorizeRequests()</span>
+<span class="fc" id="L48">        .antMatchers(&quot;/&quot;, &quot;/index.html&quot;).hasRole(USER_ROLE_NAME)</span>
+<span class="fc" id="L49">        .antMatchers(&quot;/api/applications/**/env&quot;,</span>
             &quot;/api/applications/**/jolokia&quot;,
             &quot;/api/applications/**/heapdump&quot;)
-<span class="fc" id="L54">        .hasRole(ADMIN_ROLE_NAME)</span>
-<span class="fc" id="L55">        .anyRequest().permitAll()</span>
-<span class="fc" id="L56">        .and()</span>
-<span class="fc" id="L57">      .formLogin()</span>
-<span class="fc" id="L58">        .loginPage(&quot;/login&quot;)</span>
-<span class="fc" id="L59">        .defaultSuccessUrl(&quot;/&quot;)</span>
-<span class="fc" id="L60">        .permitAll()</span>
-<span class="fc" id="L61">        .and()</span>
-<span class="fc" id="L62">      .logout()</span>
-<span class="fc" id="L63">        .permitAll();</span>
-<span class="fc" id="L64">  }</span>
+<span class="fc" id="L52">        .hasRole(ADMIN_ROLE_NAME)</span>
+<span class="fc" id="L53">        .anyRequest().permitAll()</span>
+<span class="fc" id="L54">        .and()</span>
+<span class="fc" id="L55">      .formLogin()</span>
+<span class="fc" id="L56">        .loginPage(&quot;/login&quot;)</span>
+<span class="fc" id="L57">        .defaultSuccessUrl(&quot;/&quot;)</span>
+<span class="fc" id="L58">        .permitAll()</span>
+<span class="fc" id="L59">        .and()</span>
+<span class="fc" id="L60">      .logout()</span>
+<span class="fc" id="L61">        .permitAll();</span>
+<span class="fc" id="L62">  }</span>
 
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-<span class="fc" id="L68">    SecurityProperties.User user = securityProperties.getUser();</span>
-<span class="fc" id="L69">    auth</span>
-<span class="fc" id="L70">        .inMemoryAuthentication()</span>
-<span class="fc" id="L71">        .withUser(user.getName()).password(user.getPassword()).roles(user.getRole().get(USER_ROLE_FIRST_INDEX), user</span>
-<span class="fc" id="L72">        .getRole().get(USER_ROLE_SECOND_INDEX)).and()</span>
-<span class="fc" id="L73">        .withUser(&quot;user&quot;).password(&quot;user_pass&quot;).roles(USER_ROLE_NAME, ADMIN_ROLE_NAME).and()</span>
-<span class="fc" id="L74">        .withUser(&quot;yrd&quot;).password(&quot;yrd&quot;).roles(USER_ROLE_NAME);</span>
-<span class="fc" id="L75">  }</span>
+<span class="fc" id="L66">    SecurityProperties.User user = securityProperties.getUser();</span>
+<span class="fc" id="L67">    auth</span>
+<span class="fc" id="L68">        .inMemoryAuthentication()</span>
+<span class="fc" id="L69">        .withUser(user.getName()).password(user.getPassword()).roles(user.getRole().get(USER_ROLE_FIRST_INDEX), user</span>
+<span class="fc" id="L70">        .getRole().get(USER_ROLE_SECOND_INDEX)).and()</span>
+<span class="fc" id="L71">        .withUser(&quot;user&quot;).password(&quot;user_pass&quot;).roles(USER_ROLE_NAME, ADMIN_ROLE_NAME).and()</span>
+<span class="fc" id="L72">        .withUser(&quot;oss&quot;).password(&quot;oss&quot;).roles(USER_ROLE_NAME);</span>
+<span class="fc" id="L73">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
