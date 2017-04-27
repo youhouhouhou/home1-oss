@@ -159,6 +159,120 @@
 3. `git flow feature finish`
 4. `git push origin develop`
 
+## GPG签名 on Travis CI
+
+see: http://www.debonair.io/post/maven-cd/
+
+```bash
+passphrase="passphrase"
+
+cat > maven_gpg_key_with_default_algorithms <<EOF
+%echo Generating a default key
+Key-Type: default
+Subkey-Type: default
+Name-Real: home1.cn
+Name-Comment: with passphrase
+Name-Email: opensource@home1.cn
+Expire-Date: 0
+Passphrase: ${passphrase}
+%pubring home1_cn_maven_gpg_key.pub
+%secring home1_cn_maven_gpg_key.sec
+# Do a commit here, so that we can later print "done" :-)
+%commit
+%echo done
+EOF
+```
+    
+    gpg2 --batch --gen-key maven_gpg_key_with_default_algorithms
+    gpg --allow-secret-key-import --import ./home1_cn_maven_gpg_key.sec
+    gpg --import ./home1_cn_maven_gpg_key.pub
+
+List public keys:
+
+    gpg --list-keys
+
+List private keys:
+
+    gpg --list-secret-keys
+    gpg --list-secret-keys --keyid-format LONG
+
+Submit key to the ubuntu server with
+
+    # key id: 2048R/<keyid> or 4096R/<keyid>
+    gpg --send-keys --keyserver keyserver.ubuntu.com $keyid
+
+Submit your key to the MIT server with
+
+    gpg --send-keys --keyserver pgp.mit.edu $keyid
+
+And once more just to be sure
+
+    gpg --send-keys --keyserver pool.sks-keyservers.net $keyid
+
+Put following content into ~/.m2/settings.xml
+
+    <servers>
+        <server>
+            <id>gpg.passphrase</id>
+            <passphrase>${env.GPG_PASSPHRASE}</passphrase>
+        </server>
+    </servers>
+    <profile>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
+        </properties>
+    </profile>
+
+Export and backup keys
+
+    gpg --export --armor opensource@home1.cn > home1_cn_maven_gpg_key.asc
+    gpg --export-secret-keys --armor opensource@home1.cn >> home1_cn_maven_gpg_key.asc
+
+Now put home1_cn_maven_gpg_key.asc somewhere very safe and destroy the file (use `shred --remove home1_cn_maven_gpg_key.asc` for destruction)
+
+Export sub-keys `gpg --export-secret-subkeys opensource@home1.cn > subkeys`
+
+Remove master keys `gpg --delete-secret-key opensource@home1.cn`
+
+Change passphrase
+
+    gpg --edit-key opensource@home1.cn
+    passwd
+    save
+
+Encrypt cert and variables for travis
+
+  see: https://github.com/travis-ci/travis.rb#installation
+  Make sure you have at least Ruby 1.9.3 (2.0.0 recommended) installed.
+  
+    ruby -v
+  
+  Updating your Ruby
+
+    brew install ruby
+    gem update --system
+
+  Install travis cli
+
+    gem install travis -v 1.8.8 --no-rdoc --no-ri
+    travis version
+
+  `travis login` or `travis login --github-token $GITHUB_GIT_SERVICE_TOKEN`
+
+  Make sure your working directory is the git root of your project.
+
+    gpg --export --armor opensource@home1.cn > codesigning.asc
+    gpg --export-secret-keys --armor opensource@home1.cn >> codesigning.asc
+    
+  Encrypt the keys `travis encrypt-file codesigning.asc`
+  Take note of the line that looks like: openssl aes-256-cbc -K...
+  Shred the un-encrypted keys `shred --remove codesigning.asc`
+  Make sure to move the created file to: cd/codesigning.asc.enc
+
+set GPG_KEYNAME and GPG_PASSPHRASE environment variables in travis
 
 ## 参考资料
 - [Deployment](https://docs.travis-ci.com/user/deployment#Conditional-Releases-with-on%3A)
