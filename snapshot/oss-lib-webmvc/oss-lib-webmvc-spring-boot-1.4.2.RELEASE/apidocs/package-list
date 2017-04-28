@@ -1,5 +1,5 @@
-com.yirendai.oss.lib.webmvc.api
-com.yirendai.oss.lib.webmvc.internal
-com.yirendai.oss.lib.webmvc.starter
+cn.home1.oss.lib.webmvc.api
+cn.home1.oss.lib.webmvc.internal
+cn.home1.oss.lib.webmvc.starter
 org.springframework.http.converter
 org.springframework.web
