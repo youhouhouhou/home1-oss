@@ -35,14 +35,6 @@
                 
                                 <ul class="nav">
                           <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parent Project <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-        
-                      <li>      <a href="../index.html"  title="oss-build">oss-build</a>
-</li>
-                          </ul>
-      </li>
-                <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">DOCUMENTATION <b class="caret"></b></a>
         <ul class="dropdown-menu">
         
@@ -86,6 +78,8 @@
                                   <li>      <a href="team-list.html"  title="Team">Team</a>
 </li>
                                   <li>      <a href="source-repository.html"  title="Source Code Management">Source Code Management</a>
+</li>
+                                  <li>      <a href="license.html"  title="Licenses">Licenses</a>
 </li>
                               </ul>
             </li>
@@ -149,15 +143,7 @@
           <div class="well sidebar-nav">
               
                 <ul class="nav nav-list">
-                    <li class="nav-header">Parent Project</li>
-                              
-      <li>
-  
-                          <a href="../index.html" title="oss-build">
-          <span class="none"></span>
-        oss-build</a>
-            </li>
-                              <li class="nav-header">DOCUMENTATION</li>
+                    <li class="nav-header">DOCUMENTATION</li>
                               
       <li>
   
@@ -186,7 +172,7 @@
         oss-lib-errorhandle-spring-boot-1.4.2.RELEASE</a>
             </li>
                               <li class="nav-header">Project Documentation</li>
-                                                                                                                                                                                                              
+                                                                                                                                                                                                                                
       <li>
   
                           <a href="project-info.html" title="Project Information">
@@ -225,11 +211,11 @@
 
 <p>BasicErrorController /error &#x5728;&#x67d0;&#x4e9b;&#x60c5;&#x51b5;&#x4ea7;&#x751f;&#x5faa;&#x73af;?</p>
 
-<p>@ResponseBody&#x7684;/error &#x53ef;&#x80fd;&#x4ea7;&#x751f; org.springframework.web.HttpMediaTypeNotAcceptableException: Could not find acceptable representation &#x5bfc;&#x81f4;jetty&#x663e;&#x793a; &#x9519;&#x8bef;&#x9875; Problem accessing /error &#x65ad;&#x70b9;&#x5728; org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod#invokeAndHandle curl -i -X GET -H &#x2018;Accept: application/xml;charset=utf-8&#x2019; &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/api/error/com.yirendai.oss.lib.errorhandle.test.UnfamiliarException">http://127.0.0.1:8080/api/error/com.yirendai.oss.lib.errorhandle.test.UnfamiliarException</a>&#x2019;</p>
+<p>@ResponseBody&#x7684;/error &#x53ef;&#x80fd;&#x4ea7;&#x751f; org.springframework.web.HttpMediaTypeNotAcceptableException: Could not find acceptable representation &#x5bfc;&#x81f4;jetty&#x663e;&#x793a; &#x9519;&#x8bef;&#x9875; Problem accessing /error &#x65ad;&#x70b9;&#x5728; org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod#invokeAndHandle curl -i -X GET -H &#x2018;Accept: application/xml;charset=utf-8&#x2019; &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/api/error/cn.home1.oss.lib.errorhandle.test.UnfamiliarException">http://127.0.0.1:8080/api/error/cn.home1.oss.lib.errorhandle.test.UnfamiliarException</a>&#x2019;</p>
 
 <p>jetty&#x7684;HpptChannel &#x62ff;&#x5230; error_page &#x540e; &#x6ca1;&#x6709;&#x6539;&#x53d8;&#x8bf7;&#x6c42;&#x65b9;&#x6cd5; &#x5bfc;&#x81f4;&#x9519;&#x8bef;&#x9875;&#x65e0;&#x6cd5;&#x8bbf;&#x95ee; curl -i -X METHOD_NOT_IN_RFC2068 &#x2018;<a class="externalLink" href="http://127.0.0.1:8080">http://127.0.0.1:8080</a>&#x2019;</p>
 
-<p>&#x6d4b;&#x8bd5; &#x9519;&#x8bef;&#x9875;&#x6a21;&#x7248;&#x4e0d;&#x5b58;&#x5728; curl -i -X GET -H &#x2018;Accept: text/html&#x2019; &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/errorServlet/com.yirendai.oss.lib.errorhandle.test.ErrorPageNotExistException">http://127.0.0.1:8080/errorServlet/com.yirendai.oss.lib.errorhandle.test.ErrorPageNotExistException</a>&#x2019;</p>
+<p>&#x6d4b;&#x8bd5; &#x9519;&#x8bef;&#x9875;&#x6a21;&#x7248;&#x4e0d;&#x5b58;&#x5728; curl -i -X GET -H &#x2018;Accept: text/html&#x2019; &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/errorServlet/cn.home1.oss.lib.errorhandle.test.ErrorPageNotExistException">http://127.0.0.1:8080/errorServlet/cn.home1.oss.lib.errorhandle.test.ErrorPageNotExistException</a>&#x2019;</p>
 
 <p>&#x7a81;&#x7834;requestHeaderSize (maximum header size allowed by the container) &#x534f;&#x8bae;&#x89e3;&#x6790;&#x9636;&#x6bb5;&#x51fa;&#x9519; &#x4e0d;&#x4f1a;&#x8fdb;&#x5165;&#x6b63;&#x5e38;&#x9519;&#x8bef;&#x5904;&#x7406;&#x6d41;&#x7a0b; curl -i -X GET -H &quot;Big-Header: $(&lt; /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c8192)&quot; &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/index.html">http://127.0.0.1:8080/index.html</a>&#x2019;</p>
 
@@ -241,7 +227,7 @@
 
 <p>&#x89e6;&#x53d1;Controller&#x629b;&#x51fa;&#x6307;&#x5b9a;&#x5f02;&#x5e38; &#x4f1a;&#x8fdb;&#x5230;resolveException curl -i -X GET &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/api/error/java.lang.IllegalArgumentException">http://127.0.0.1:8080/api/error/java.lang.IllegalArgumentException</a>&#x2019;</p>
 
-<p>&#x89e6;&#x53d1;UnfamiliarException curl -i -X GET &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/api/error/com.yirendai.oss.lib.errorhandle.test.UnfamiliarException">http://127.0.0.1:8080/api/error/com.yirendai.oss.lib.errorhandle.test.UnfamiliarException</a>&#x2019;</p>
+<p>&#x89e6;&#x53d1;UnfamiliarException curl -i -X GET &#x2018;<a class="externalLink" href="http://127.0.0.1:8080/api/error/cn.home1.oss.lib.errorhandle.test.UnfamiliarException">http://127.0.0.1:8080/api/error/cn.home1.oss.lib.errorhandle.test.UnfamiliarException</a>&#x2019;</p>
 
 <p>&#x89e6;&#x53d1;404 &#x4f1a;&#x76f4;&#x63a5;&#x8fdb;&#x5230; org.eclipse.jetty.servlet.ErrorPageErrorHandler curl -i -X GET <a class="externalLink" href="http://127.0.0.1:8080/pageNotExists">http://127.0.0.1:8080/pageNotExists</a></p>
 

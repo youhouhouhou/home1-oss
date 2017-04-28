@@ -35,14 +35,6 @@
                 
                                 <ul class="nav">
                           <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parent Project <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-        
-                      <li>      <a href="../index.html"  title="oss-build">oss-build</a>
-</li>
-                          </ul>
-      </li>
-                <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">DOCUMENTATION <b class="caret"></b></a>
         <ul class="dropdown-menu">
         
@@ -86,6 +78,8 @@
                                   <li>      <a href="team-list.html"  title="Team">Team</a>
 </li>
                                   <li>      <a href="source-repository.html"  title="Source Code Management">Source Code Management</a>
+</li>
+                                  <li>      <a href="license.html"  title="Licenses">Licenses</a>
 </li>
                               </ul>
             </li>
@@ -149,15 +143,7 @@
           <div class="well sidebar-nav">
               
                 <ul class="nav nav-list">
-                    <li class="nav-header">Parent Project</li>
-                              
-      <li>
-  
-                          <a href="../index.html" title="oss-build">
-          <span class="none"></span>
-        oss-build</a>
-            </li>
-                              <li class="nav-header">DOCUMENTATION</li>
+                    <li class="nav-header">DOCUMENTATION</li>
                               
       <li>
   
@@ -188,7 +174,7 @@
         oss-lib-errorhandle-spring-boot-1.4.2.RELEASE</a>
             </li>
                               <li class="nav-header">Project Documentation</li>
-                                                                                                                                                                                                              
+                                                                                                                                                                                                                                
       <li>
   
                           <a href="project-info.html" title="Project Information">
@@ -271,7 +257,7 @@
 <tr class="b">
 <td>35</td>
 <td>0</td>
-<td>0</td>
+<td>14</td>
 <td>0</td></tr></table></div>
 <div class="section">
 <h2><a name="Files"></a>Files</h2>
@@ -280,7 +266,27 @@
 <th>File</th>
 <th><img src="images/icon_info_sml.gif" alt="" />&#160;I</th>
 <th><img src="images/icon_warning_sml.gif" alt="" />&#160;W</th>
-<th><img src="images/icon_error_sml.gif" alt="" />&#160;E</th></tr></table></div>
+<th><img src="images/icon_error_sml.gif" alt="" />&#160;E</th></tr>
+<tr class="b">
+<td><a href="#cn.home1.oss.lib.errorhandle.api.AbstractConcreteExceptionResolver.java">cn/home1/oss/lib/errorhandle/api/AbstractConcreteExceptionResolver.java</a></td>
+<td>0</td>
+<td>2</td>
+<td>0</td></tr>
+<tr class="a">
+<td><a href="#cn.home1.oss.lib.errorhandle.internal.rpc.GenericFeignErrorDecoder.java">cn/home1/oss/lib/errorhandle/internal/rpc/GenericFeignErrorDecoder.java</a></td>
+<td>0</td>
+<td>1</td>
+<td>0</td></tr>
+<tr class="b">
+<td><a href="#cn.home1.oss.lib.errorhandle.internal.translator.DefaultExceptionTranslator.java">cn/home1/oss/lib/errorhandle/internal/translator/DefaultExceptionTranslator.java</a></td>
+<td>0</td>
+<td>3</td>
+<td>0</td></tr>
+<tr class="a">
+<td><a href="#cn.home1.oss.lib.errorhandle.starter.ErrorHandleAutoConfiguration.java">cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.java</a></td>
+<td>0</td>
+<td>8</td>
+<td>0</td></tr></table></div>
 <div class="section">
 <h2><a name="Rules"></a>Rules</h2>
 <table border="0" class="table table-striped">
@@ -288,9 +294,138 @@
 <th>Category</th>
 <th>Rule</th>
 <th>Violations</th>
-<th>Severity</th></tr></table></div>
+<th>Severity</th></tr>
+<tr class="a">
+<td>imports</td>
+<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_imports.html#CustomImportOrder">CustomImportOrder</a>
+<ul>
+<li>sortImportsInGroupAlphabetically: <tt>&quot;true&quot;</tt></li>
+<li>specialImportsRegExp: <tt>&quot;com.google&quot;</tt></li>
+<li>customImportOrderRules: <tt>&quot;STATIC###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE###STANDARD_JAVA_PACKAGE&quot;</tt></li></ul></td>
+<td>14</td>
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td></tr></table></div>
 <div class="section">
-<h2><a name="Details"></a>Details</h2></div>
+<h2><a name="Details"></a>Details</h2>
+<div class="section">
+<h3 id="cn.home1.oss.lib.errorhandle.api.AbstractConcreteExceptionResolver.java">cn/home1/oss/lib/errorhandle/api/AbstractConcreteExceptionResolver.java</h3>
+<table border="0" class="table table-striped">
+<tr class="b">
+<th>Severity</th>
+<th>Category</th>
+<th>Rule</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.CurlUtils.curl' import. Should be before 'com.google.common.collect.Lists.newArrayList'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/api/AbstractConcreteExceptionResolver.html#L7">7</a></td></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.Defaults' import. Should be before 'cn.home1.oss.lib.errorhandle.api.ExceptionTranslator.Location'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/api/AbstractConcreteExceptionResolver.html#L15">15</a></td></tr></table></div>
+<div class="section">
+<h3 id="cn.home1.oss.lib.errorhandle.internal.rpc.GenericFeignErrorDecoder.java">cn/home1/oss/lib/errorhandle/internal/rpc/GenericFeignErrorDecoder.java</h3>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>Severity</th>
+<th>Category</th>
+<th>Rule</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.JaxbUtils' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/internal/rpc/GenericFeignErrorDecoder.html#L11">11</a></td></tr></table></div>
+<div class="section">
+<h3 id="cn.home1.oss.lib.errorhandle.internal.translator.DefaultExceptionTranslator.java">cn/home1/oss/lib/errorhandle/internal/translator/DefaultExceptionTranslator.java</h3>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>Severity</th>
+<th>Category</th>
+<th>Rule</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.msginterpolate.MessageInterpolator' import. Should be before 'cn.home1.oss.lib.errorhandle.api.ExceptionTranslator'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/internal/translator/DefaultExceptionTranslator.html#L14">14</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.msginterpolate.MessageInterpolatorAware' import. Should be before 'cn.home1.oss.lib.errorhandle.api.ExceptionTranslator'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/internal/translator/DefaultExceptionTranslator.html#L15">15</a></td></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.msginterpolate.NoOpMessageInterpolator' import. Should be before 'cn.home1.oss.lib.errorhandle.api.ExceptionTranslator'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/internal/translator/DefaultExceptionTranslator.html#L16">16</a></td></tr></table></div>
+<div class="section">
+<h3 id="cn.home1.oss.lib.errorhandle.starter.ErrorHandleAutoConfiguration.java">cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.java</h3>
+<table border="0" class="table table-striped">
+<tr class="a">
+<th>Severity</th>
+<th>Category</th>
+<th>Rule</th>
+<th>Message</th>
+<th>Line</th></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.Jackson2Utils.getJackson2Present' import. Should be before 'com.google.common.collect.Lists.newArrayList'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L9">9</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.common.msginterpolate.SpelMessageInterpolator' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L27">27</a></td></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.webmvc.api.DomainResolver' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L28">28</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.webmvc.api.JsonToken' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L29">29</a></td></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.webmvc.api.TokenBasedCookie' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L30">30</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.webmvc.api.TypeSafeCookie' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L31">31</a></td></tr>
+<tr class="b">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.webmvc.api.UrlEncodedToken' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L32">32</a></td></tr>
+<tr class="a">
+<td><img src="images/icon_warning_sml.gif" alt="" />&#160;Warning</td>
+<td>imports</td>
+<td>CustomImportOrder</td>
+<td>Wrong lexicographical order for 'cn.home1.oss.lib.webmvc.starter.WebApplicationAutoConfiguration' import. Should be before 'com.fasterxml.jackson.databind.ObjectMapper'.</td>
+<td><a href="./xref/cn/home1/oss/lib/errorhandle/starter/ErrorHandleAutoConfiguration.html#L33">33</a></td></tr></table></div></div>
                   </div>
             </div>
           </div>
