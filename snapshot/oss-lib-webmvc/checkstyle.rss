@@ -27,7 +27,7 @@ under the License.
     <item>
       <title>File: 20,
              Errors: 0,
-             Warnings: 0,
+             Warnings: 10,
              Infos: 0
       </title>
             <link>https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html</link>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.DomainResolver.java">com/yirendai/oss/lib/webmvc/api/DomainResolver.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.internal.DefaultHttpEntityMethodProcessor.java">cn/home1/oss/lib/webmvc/internal/DefaultHttpEntityMethodProcessor.java</a>
                 </td>
                 <td>
                   0
@@ -60,27 +60,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.Jetty9ServerCustomizers.java">com/yirendai/oss/lib/webmvc/api/Jetty9ServerCustomizers.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.internal.DefaultRequestResolver.java">cn/home1/oss/lib/webmvc/internal/DefaultRequestResolver.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.JsonWebToken.java">com/yirendai/oss/lib/webmvc/api/JsonWebToken.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  1
                 </td>
                 <td>
                   0
@@ -88,21 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.JsonToken.java">com/yirendai/oss/lib/webmvc/api/JsonToken.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.internal.DefaultRequestResolver.java">com/yirendai/oss/lib/webmvc/internal/DefaultRequestResolver.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.UrlEncodedToken.java">cn/home1/oss/lib/webmvc/api/UrlEncodedToken.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.TypeSafeCookie.java">com/yirendai/oss/lib/webmvc/api/TypeSafeCookie.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.TokenBasedCookie.java">cn/home1/oss/lib/webmvc/api/TokenBasedCookie.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +116,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.UrlEncodedToken.java">com/yirendai/oss/lib/webmvc/api/UrlEncodedToken.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.starter.WebApplicationAutoConfiguration.java">cn/home1/oss/lib/webmvc/starter/WebApplicationAutoConfiguration.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.SecureToken.java">cn/home1/oss/lib/webmvc/api/SecureToken.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.TypeSafeToken.java">com/yirendai/oss/lib/webmvc/api/TypeSafeToken.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.DomainResolver.java">cn/home1/oss/lib/webmvc/api/DomainResolver.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.internal.DefaultHttpEntityMethodProcessor.java">com/yirendai/oss/lib/webmvc/internal/DefaultHttpEntityMethodProcessor.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.TypeSafeCookie.java">cn/home1/oss/lib/webmvc/api/TypeSafeCookie.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.TokenBasedCookie.java">com/yirendai/oss/lib/webmvc/api/TokenBasedCookie.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.starter.GsonConfiguration.java">cn/home1/oss/lib/webmvc/starter/GsonConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +186,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.starter.Jackson2Configuration.java">com/yirendai/oss/lib/webmvc/starter/Jackson2Configuration.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.RequestResolver.java">cn/home1/oss/lib/webmvc/api/RequestResolver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.JsonToken.java">cn/home1/oss/lib/webmvc/api/JsonToken.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.starter.Jackson2Configuration.java">cn/home1/oss/lib/webmvc/starter/Jackson2Configuration.java</a>
                 </td>
                 <td>
                   0
@@ -228,21 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.RequestResolver.java">com/yirendai/oss/lib/webmvc/api/RequestResolver.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.SecureToken.java">com/yirendai/oss/lib/webmvc/api/SecureToken.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.Jetty9ServerCustomizers.java">cn/home1/oss/lib/webmvc/api/Jetty9ServerCustomizers.java</a>
                 </td>
                 <td>
                   0
@@ -270,7 +270,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.starter.WebApplicationAutoConfiguration.java">com/yirendai/oss/lib/webmvc/starter/WebApplicationAutoConfiguration.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.JsonWebToken.java">cn/home1/oss/lib/webmvc/api/JsonWebToken.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.StringToken.java">cn/home1/oss/lib/webmvc/api/StringToken.java</a>
                 </td>
                 <td>
                   0
@@ -284,27 +298,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.api.StringToken.java">com/yirendai/oss/lib/webmvc/api/StringToken.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.internal.DefaultDomainResolver.java">cn/home1/oss/lib/webmvc/internal/DefaultDomainResolver.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.starter.GsonConfiguration.java">com/yirendai/oss/lib/webmvc/starter/GsonConfiguration.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  1
                 </td>
                 <td>
                   0
@@ -312,7 +312,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#com.yirendai.oss.lib.webmvc.internal.DefaultDomainResolver.java">com/yirendai/oss/lib/webmvc/internal/DefaultDomainResolver.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-webmvc/checkstyle.html#cn.home1.oss.lib.webmvc.api.TypeSafeToken.java">cn/home1/oss/lib/webmvc/api/TypeSafeToken.java</a>
                 </td>
                 <td>
                   0
