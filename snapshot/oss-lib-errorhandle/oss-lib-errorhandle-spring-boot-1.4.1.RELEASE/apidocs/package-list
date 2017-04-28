@@ -1,6 +1,6 @@
-com.yirendai.oss.lib.errorhandle.api
-com.yirendai.oss.lib.errorhandle.internal
-com.yirendai.oss.lib.errorhandle.internal.resolver
-com.yirendai.oss.lib.errorhandle.internal.rpc
-com.yirendai.oss.lib.errorhandle.internal.translator
-com.yirendai.oss.lib.errorhandle.starter
+cn.home1.oss.lib.errorhandle.api
+cn.home1.oss.lib.errorhandle.internal
+cn.home1.oss.lib.errorhandle.internal.resolver
+cn.home1.oss.lib.errorhandle.internal.rpc
+cn.home1.oss.lib.errorhandle.internal.translator
+cn.home1.oss.lib.errorhandle.starter
