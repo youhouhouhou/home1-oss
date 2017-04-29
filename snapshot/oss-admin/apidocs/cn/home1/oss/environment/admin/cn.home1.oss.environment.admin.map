@@ -1,0 +1,22 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./ClientKey.html" title="cn.home1.oss.environment.admin.ClientKey" alt="" coords="16,63,683,175"/>
+<area shape="rect" id="node1" href="./ClientKey.html" title="&lt;TABLE&gt;" alt="" coords="5,57,693,180"/>
+<area shape="rect" id="node2_1" href="./ServiceMonitor.html" title="cn.home1.oss.environment.admin.ServiceMonitor" alt="" coords="728,54,1323,183"/>
+<area shape="rect" id="node2" href="./ServiceMonitor.html" title="&lt;TABLE&gt;" alt="" coords="717,49,1333,189"/>
+<area shape="rect" id="node3_2" href="./AbstractZuulFilter.html" title="cn.home1.oss.environment.admin.AbstractZuulFilter" alt="" coords="1368,54,1701,183"/>
+<area shape="rect" id="node3" href="./AbstractZuulFilter.html" title="&lt;TABLE&gt;" alt="" coords="1357,49,1712,189"/>
+<area shape="rect" id="node6_3" href="./PostFilterForClientInfo.html" title="cn.home1.oss.environment.admin.PostFilterForClientInfo" alt="" coords="1278,285,1450,397"/>
+<area shape="rect" id="node6" href="./PostFilterForClientInfo.html" title="&lt;TABLE&gt;" alt="" coords="1267,280,1461,403"/>
+<area shape="rect" id="node10_4" href="./BasicAuthFilter.html" title="cn.home1.oss.environment.admin.BasicAuthFilter" alt="" coords="1495,285,1915,397"/>
+<area shape="rect" id="node10" href="./BasicAuthFilter.html" title="&lt;TABLE&gt;" alt="" coords="1485,280,1926,403"/>
+<area shape="rect" id="node4_5" href="./PatchedStatusUpdater.html" title="cn.home1.oss.environment.admin.PatchedStatusUpdater" alt="" coords="1747,37,2234,201"/>
+<area shape="rect" id="node4" href="./PatchedStatusUpdater.html" title="&lt;TABLE&gt;" alt="" coords="1737,31,2245,206"/>
+<area shape="rect" id="node5_6" href="./ClientKeyStore.html" title="cn.home1.oss.environment.admin.ClientKeyStore" alt="" coords="2279,37,2540,201"/>
+<area shape="rect" id="node5" href="./ClientKeyStore.html" title="&lt;TABLE&gt;" alt="" coords="2268,31,2551,206"/>
+<area shape="rect" id="node7_7" href="./WebSecurityConfig.html" title="cn.home1.oss.environment.admin.WebSecurityConfig" alt="" coords="2585,63,2927,175"/>
+<area shape="rect" id="node7" href="./WebSecurityConfig.html" title="&lt;TABLE&gt;" alt="" coords="2575,57,2937,180"/>
+<area shape="rect" id="node8_8" href="./WebMvcConfiguration.html" title="cn.home1.oss.environment.admin.WebMvcConfiguration" alt="" coords="2973,71,3347,166"/>
+<area shape="rect" id="node8" href="./WebMvcConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="2962,66,3358,171"/>
+<area shape="rect" id="node9_9" href="./AdminApplication.html" title="cn.home1.oss.environment.admin.AdminApplication" alt="" coords="3393,11,3775,227"/>
+<area shape="rect" id="node9" href="./AdminApplication.html" title="&lt;TABLE&gt;" alt="" coords="3382,5,3786,232"/>
+</map>
