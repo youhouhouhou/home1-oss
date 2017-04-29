@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SwaggerConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-lib-security-spring-boot-1.4.1.RELEASE</a> &gt; <a href="index.source.html" class="el_package">cn.home1.oss.lib.security.starter</a> &gt; <span class="el_source">SwaggerConfiguration.java</span></div><h1>SwaggerConfiguration.java</h1><pre class="source lang-java linenums">package cn.home1.oss.lib.security.starter;
+
+import static cn.home1.oss.boot.autoconfigure.AppSecurity.ENABLED;
+
+import cn.home1.oss.boot.autoconfigure.ConditionalOnAppSecurity;
+import cn.home1.oss.boot.autoconfigure.ConditionalOnNotEnvProduction;
+import cn.home1.oss.lib.security.swagger.AfterOperationBuilderBuildPlugin;
+import cn.home1.oss.lib.security.swagger.AuthenticationTokenHeaderBuilderPlugin;
+import cn.home1.oss.lib.security.swagger.BasicAuthHeaderBuilderPlugin;
+import cn.home1.oss.lib.security.swagger.SecurityApiDocumentationPlugin;
+
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@ConditionalOnClass(name = {&quot;springfox.documentation.RequestHandler&quot;})
+@ConditionalOnNotEnvProduction
+@Configuration
+<span class="nc" id="L19">public class SwaggerConfiguration {</span>
+
+  @Bean
+  @ConditionalOnAppSecurity(ENABLED)
+  public AuthenticationTokenHeaderBuilderPlugin authenticationTokenHeaderBuilderPlugin() {
+<span class="nc" id="L24">    return new AuthenticationTokenHeaderBuilderPlugin();</span>
+  }
+
+  @Bean
+  @ConditionalOnAppSecurity(ENABLED)
+  public BasicAuthHeaderBuilderPlugin basicAuthHeaderBuilderPlugin() {
+<span class="nc" id="L30">    return new BasicAuthHeaderBuilderPlugin();</span>
+  }
+
+  @Bean
+  @ConditionalOnAppSecurity(ENABLED)
+  public SecurityApiDocumentationPlugin securityApiDocumentationPlugin() {
+<span class="nc" id="L36">    return new SecurityApiDocumentationPlugin();</span>
+  }
+
+  @Bean
+  @ConditionalOnAppSecurity(ENABLED)
+  public AfterOperationBuilderBuildPlugin afterOperationBuilderBuildPlugin() {
+<span class="nc" id="L42">    return new AfterOperationBuilderBuildPlugin();</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

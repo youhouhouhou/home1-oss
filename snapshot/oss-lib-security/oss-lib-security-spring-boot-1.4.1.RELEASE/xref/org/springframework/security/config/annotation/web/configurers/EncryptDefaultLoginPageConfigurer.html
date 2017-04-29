@@ -8,17 +8,17 @@
 <div id="overview"><a href="../../../../../../../../apidocs/org/springframework/security/config/annotation/web/configurers/EncryptDefaultLoginPageConfigurer.html">View Javadoc</a></div><pre>
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> org.springframework.security.config.annotation.web.configurers;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
-<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> com.yirendai.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint.templateEntryPoint;
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> cn.home1.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint.templateEntryPoint;
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.springframework.util.ClassUtils.isAssignableValue;
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.springframework.util.ReflectionUtils.findField;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.springframework.util.ReflectionUtils.getField;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.springframework.util.ReflectionUtils.makeAccessible;
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> com.yirendai.oss.lib.errorhandle.api.ExceptionResolver;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> com.yirendai.oss.lib.errorhandle.api.ResolvedError;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> com.yirendai.oss.lib.security.internal.template.EncryptDefaultLoginPageGeneratingFilter;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> com.yirendai.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint;
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> com.yirendai.oss.lib.webmvc.api.TypeSafeCookie;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> cn.home1.oss.lib.errorhandle.api.ExceptionResolver;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> cn.home1.oss.lib.errorhandle.api.ResolvedError;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> cn.home1.oss.lib.security.internal.template.EncryptDefaultLoginPageGeneratingFilter;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> cn.home1.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> cn.home1.oss.lib.webmvc.api.TypeSafeCookie;
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">import</strong> org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">import</strong> org.springframework.security.web.AuthenticationEntryPoint;
@@ -50,7 +50,7 @@
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">final</strong> ExceptionResolver&lt;Throwable&gt; exceptionResolver, <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>      <strong class="jxr_keyword">final</strong> TypeSafeCookie&lt;ResolvedError&gt; resolvedErrorCookie <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>    ) {
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">final</strong> <a href="../../../../../../../com/yirendai/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html">EncryptDefaultLoginPageGeneratingFilter</a> filter = <strong class="jxr_keyword">new</strong> <a href="../../../../../../../com/yirendai/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html">EncryptDefaultLoginPageGeneratingFilter</a>();
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">final</strong> <a href="../../../../../../../cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html">EncryptDefaultLoginPageGeneratingFilter</a> filter = <strong class="jxr_keyword">new</strong> <a href="../../../../../../../cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html">EncryptDefaultLoginPageGeneratingFilter</a>();
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>      filter.setRsaPublicKey(publicKey);
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>      filter.setLoginPageUrl(loginPage);
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>      <strong class="jxr_keyword">this</strong>.loginPage = loginPage;
@@ -97,7 +97,7 @@
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>        <strong class="jxr_keyword">final</strong> AuthenticationEntryPoint value = entry.getValue();
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>        <strong class="jxr_keyword">if</strong> (isAssignableValue(LoginUrlAuthenticationEntryPoint.<strong class="jxr_keyword">class</strong>, value)) {
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          <em class="jxr_comment">///final LoginUrlAuthenticationEntryPoint current = (LoginUrlAuthenticationEntryPoint) value;</em>
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>          <strong class="jxr_keyword">final</strong> <a href="../../../../../../../com/yirendai/oss/lib/security/internal/template/TemplateAuthenticationEntryPoint.html">TemplateAuthenticationEntryPoint</a> replacement = templateEntryPoint( <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          <strong class="jxr_keyword">final</strong> <a href="../../../../../../../cn/home1/oss/lib/security/internal/template/TemplateAuthenticationEntryPoint.html">TemplateAuthenticationEntryPoint</a> replacement = templateEntryPoint( <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>            <strong class="jxr_keyword">this</strong>.loginPage, <strong class="jxr_keyword">this</strong>.exceptionResolver, <strong class="jxr_keyword">this</strong>.resolvedErrorCookie);
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>          entry.setValue(replacement);
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>        }
