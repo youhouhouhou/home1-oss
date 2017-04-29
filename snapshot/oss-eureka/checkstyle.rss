@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-eureka/checkstyle.html#com.yirendai.oss.environment.eureka.EurekaServer.java">com/yirendai/oss/environment/eureka/EurekaServer.java</a>
+                  <a href="https://github.com/home1-oss/oss-eureka/checkstyle.html#git.properties">git.properties</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-eureka/checkstyle.html#git.properties">git.properties</a>
+                  <a href="https://github.com/home1-oss/oss-eureka/checkstyle.html#cn.home1.oss.environment.eureka.EurekaServer.java">cn/home1/oss/environment/eureka/EurekaServer.java</a>
                 </td>
                 <td>
                   0
