@@ -65,6 +65,8 @@
               <ul class="dropdown-menu">
                                   <li>      <a href="jacoco/index.html"  title="JaCoCo">JaCoCo</a>
 </li>
+                                  <li>      <a href="clirr-report.html"  title="Clirr">Clirr</a>
+</li>
                                   <li>      <a href="surefire-report.html"  title="Surefire Report">Surefire Report</a>
 </li>
                                   <li>      <a href="findbugs.html"  title="FindBugs">FindBugs</a>
@@ -115,7 +117,7 @@
                   <li id="publishDate">Last Published: 2017-04-29
                       <span class="divider">|</span>
                    </li>
-                  <li id="projectVersion">Version: 1.0.7.OSS
+                  <li id="projectVersion">Version: 1.0.8.OSS-SNAPSHOT
                       </li>
                       
               
@@ -137,7 +139,7 @@
           <span class="icon-chevron-right"></span>
         Project Information</a>
                   </li>
-                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                
       <li>
   
                           <a href="project-reports.html" title="Project Reports">
@@ -150,6 +152,13 @@
                           <a href="jacoco/index.html" title="JaCoCo">
           <span class="none"></span>
         JaCoCo</a>
+            </li>
+                    
+      <li>
+  
+                          <a href="clirr-report.html" title="Clirr">
+          <span class="none"></span>
+        Clirr</a>
             </li>
                     
       <li>
@@ -279,10 +288,10 @@
 <td>The class 'GenericUser' has a Modified Cyclomatic Complexity of 2 (Highest = 10).</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L77">77</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L254">254</a></td></tr>
 <tr class="b">
-<td>The class 'GenericUser' has a Cyclomatic Complexity of 2 (Highest = 11).</td>
+<td>The class 'GenericUser' has a Standard Cyclomatic Complexity of 2 (Highest = 10).</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L77">77</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L254">254</a></td></tr>
 <tr class="a">
-<td>The class 'GenericUser' has a Standard Cyclomatic Complexity of 2 (Highest = 10).</td>
+<td>The class 'GenericUser' has a Cyclomatic Complexity of 2 (Highest = 11).</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L77">77</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L254">254</a></td></tr>
 <tr class="b">
 <td>Avoid unused private fields such as 'accountNonExpired'.</td>
@@ -324,10 +333,10 @@
 <td>The method 'fromPrincipal' has a Standard Cyclomatic Complexity of 10.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L113">113</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L137">137</a></td></tr>
 <tr class="a">
-<td>The method 'fromPrincipal' has a Cyclomatic Complexity of 11.</td>
+<td>The method 'fromPrincipal' has a Modified Cyclomatic Complexity of 10.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L113">113</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L137">137</a></td></tr>
 <tr class="b">
-<td>The method 'fromPrincipal' has a Modified Cyclomatic Complexity of 10.</td>
+<td>The method 'fromPrincipal' has a Cyclomatic Complexity of 11.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L113">113</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/GenericUser.html#L137">137</a></td></tr></table></div>
 <div class="section">
 <h3><a name="cnhome1osslibsecurityapiOAuth2Utils.java"></a>cn/home1/oss/lib/security/api/OAuth2Utils.java</h3>
@@ -336,13 +345,13 @@
 <th>Violation</th>
 <th>Line</th></tr>
 <tr class="b">
-<td>This abstract class does not have any abstract methods</td>
+<td>Abstract classes should be named AbstractXXX</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/OAuth2Utils.html#L23">23</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/OAuth2Utils.html#L59">59</a></td></tr>
 <tr class="a">
-<td>A class which only has private constructors should be final</td>
+<td>This abstract class does not have any abstract methods</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/OAuth2Utils.html#L23">23</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/OAuth2Utils.html#L59">59</a></td></tr>
 <tr class="b">
-<td>Abstract classes should be named AbstractXXX</td>
+<td>A class which only has private constructors should be final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/OAuth2Utils.html#L23">23</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/api/OAuth2Utils.html#L59">59</a></td></tr>
 <tr class="a">
 <td>A method should have only one exit point, and that should be the last statement in the method</td>
@@ -375,10 +384,10 @@
 <th>Violation</th>
 <th>Line</th></tr>
 <tr class="a">
-<td>Avoid unused private fields such as 'authorities'.</td>
+<td>Private field 'authorities' could be made final; it is only initialized in the declaration or constructor.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/UserDetails.html#L36">36</a></td></tr>
 <tr class="b">
-<td>Private field 'authorities' could be made final; it is only initialized in the declaration or constructor.</td>
+<td>Avoid unused private fields such as 'authorities'.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/api/UserDetails.html#L36">36</a></td></tr>
 <tr class="a">
 <td>Avoid unused private fields such as 'enabled'.</td>
@@ -402,10 +411,10 @@
 <th>Violation</th>
 <th>Line</th></tr>
 <tr class="a">
-<td>Abstract classes should be named AbstractXXX</td>
+<td>This abstract class does not have any abstract methods</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/AuthenticationTokens.html#L21">21</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/AuthenticationTokens.html#L104">104</a></td></tr>
 <tr class="b">
-<td>This abstract class does not have any abstract methods</td>
+<td>Abstract classes should be named AbstractXXX</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/AuthenticationTokens.html#L21">21</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/AuthenticationTokens.html#L104">104</a></td></tr>
 <tr class="a">
 <td>A class which only has private constructors should be final</td>
@@ -495,13 +504,13 @@
 <td>Possible God class (WMC=53, ATFD=25, TCC=0.0)</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L1">1</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L369">369</a></td></tr>
 <tr class="a">
-<td>The class 'EncryptDefaultLoginPageGeneratingFilter' has a Cyclomatic Complexity of 2 (Highest = 14).</td>
+<td>The class 'EncryptDefaultLoginPageGeneratingFilter' has a Standard Cyclomatic Complexity of 2 (Highest = 14).</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L36">36</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L369">369</a></td></tr>
 <tr class="b">
-<td>The class 'EncryptDefaultLoginPageGeneratingFilter' has a Modified Cyclomatic Complexity of 2 (Highest = 14).</td>
+<td>The class 'EncryptDefaultLoginPageGeneratingFilter' has a Cyclomatic Complexity of 2 (Highest = 14).</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L36">36</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L369">369</a></td></tr>
 <tr class="a">
-<td>The class 'EncryptDefaultLoginPageGeneratingFilter' has a Standard Cyclomatic Complexity of 2 (Highest = 14).</td>
+<td>The class 'EncryptDefaultLoginPageGeneratingFilter' has a Modified Cyclomatic Complexity of 2 (Highest = 14).</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L36">36</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L369">369</a></td></tr>
 <tr class="b">
 <td>It is a good practice to call super() in a constructor</td>
@@ -531,25 +540,25 @@
 <td>Local variable 'loginPageHtml' could be declared final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L193">193</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L194">194</a></td></tr>
 <tr class="a">
-<td>The method 'childGenerateLoginPageHtml' has a Cyclomatic Complexity of 14.</td>
-<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
-<tr class="b">
 <td>The method 'childGenerateLoginPageHtml' has a Modified Cyclomatic Complexity of 14.</td>
-<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
-<tr class="a">
-<td>The method 'childGenerateLoginPageHtml' has a Standard Cyclomatic Complexity of 14.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
 <tr class="b">
 <td>Avoid really long methods.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
 <tr class="a">
-<td>Parameter 'loginError' is not assigned and could be declared final</td>
-<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a></td></tr>
-<tr class="b">
 <td>The method childGenerateLoginPageHtml() has an NPath complexity of 18480</td>
+<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
+<tr class="b">
+<td>The method 'childGenerateLoginPageHtml' has a Standard Cyclomatic Complexity of 14.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
 <tr class="a">
 <td>Parameter 'request' is not assigned and could be declared final</td>
+<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a></td></tr>
+<tr class="b">
+<td>The method 'childGenerateLoginPageHtml' has a Cyclomatic Complexity of 14.</td>
+<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L321">321</a></td></tr>
+<tr class="a">
+<td>Parameter 'loginError' is not assigned and could be declared final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L205">205</a></td></tr>
 <tr class="b">
 <td>Parameter 'logoutSuccess' is not assigned and could be declared final</td>
@@ -561,10 +570,10 @@
 <td>Local variable 'ex' could be declared final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L213">213</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L214">214</a></td></tr>
 <tr class="a">
-<td>Local variable 'sb' could be declared final</td>
+<td>StringBuffer constructor is initialized with size 16, but has at least 973 characters appended.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L219">219</a></td></tr>
 <tr class="b">
-<td>StringBuffer constructor is initialized with size 16, but has at least 973 characters appended.</td>
+<td>Local variable 'sb' could be declared final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L219">219</a></td></tr>
 <tr class="a">
 <td>StringBuffer (or StringBuilder).append is called 4 consecutive times with literal Strings. Use a single append with a single combined String.</td>
@@ -594,11 +603,11 @@
 <td>StringBuffer (or StringBuilder).append is called 4 consecutive times with literal Strings. Use a single append with a single combined String.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L283">283</a></td></tr>
 <tr class="b">
-<td>StringBuffer (or StringBuilder).append is called consecutively without reusing the target variable.</td>
-<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L297">297</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L317">317</a></td></tr>
-<tr class="a">
 <td>StringBuffer (or StringBuilder).append is called 3 consecutive times with literal Strings. Use a single append with a single combined String.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L297">297</a></td></tr>
+<tr class="a">
+<td>StringBuffer (or StringBuilder).append is called consecutively without reusing the target variable.</td>
+<td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L297">297</a>&#x2013;<a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L317">317</a></td></tr>
 <tr class="b">
 <td>StringBuffer (or StringBuilder).append is called 5 consecutive times with literal Strings. Use a single append with a single combined String.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L299">299</a></td></tr>
@@ -615,10 +624,10 @@
 <td>StringBuffer (or StringBuilder).append is called 8 consecutive times with literal Strings. Use a single append with a single combined String.</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L311">311</a></td></tr>
 <tr class="a">
-<td>Parameter 'request' is not assigned and could be declared final</td>
+<td>Parameter 'sb' is not assigned and could be declared final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L323">323</a></td></tr>
 <tr class="b">
-<td>Parameter 'sb' is not assigned and could be declared final</td>
+<td>Parameter 'request' is not assigned and could be declared final</td>
 <td><a href="./xref/cn/home1/oss/lib/security/internal/template/EncryptDefaultLoginPageGeneratingFilter.html#L323">323</a></td></tr>
 <tr class="a">
 <td>Parameter 'request' is not assigned and could be declared final</td>
