@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./NoManagementConfiguration.html" title="cn.home1.oss.lib.swagger.starter.NoManagementConfiguration" alt="" coords="16,29,283,123"/>
+<area shape="rect" id="node1" href="./NoManagementConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="5,23,293,129"/>
+<area shape="rect" id="node2_1" href="./AnnotationCheckListener.html" title="cn.home1.oss.lib.swagger.starter.AnnotationCheckListener" alt="" coords="329,29,666,123"/>
+<area shape="rect" id="node2" href="./AnnotationCheckListener.html" title="&lt;TABLE&gt;" alt="" coords="318,23,677,129"/>
+<area shape="rect" id="node3_2" href="./ManagementConfiguration.html" title="cn.home1.oss.lib.swagger.starter.ManagementConfiguration" alt="" coords="712,20,979,132"/>
+<area shape="rect" id="node3" href="./ManagementConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="701,15,989,137"/>
+<area shape="rect" id="node4_3" href="./Swagger2DocumentationAutoConfiguration.html" title="cn.home1.oss.lib.swagger.starter.Swagger2DocumentationAutoConfiguration" alt="" coords="1025,11,1319,141"/>
+<area shape="rect" id="node4" href="./Swagger2DocumentationAutoConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="1014,6,1330,146"/>
+</map>

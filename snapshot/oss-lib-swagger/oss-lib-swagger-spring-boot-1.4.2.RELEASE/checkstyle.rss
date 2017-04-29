@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.model.ApiResponse.java">com/yirendai/oss/lib/swagger/model/ApiResponse.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.model.ApiRequest.java">cn/home1/oss/lib/swagger/model/ApiRequest.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.starter.ManagementConfiguration.java">com/yirendai/oss/lib/swagger/starter/ManagementConfiguration.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.starter.AnnotationCheckListener.java">cn/home1/oss/lib/swagger/starter/AnnotationCheckListener.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.starter.AnnotationCheckListener.java">com/yirendai/oss/lib/swagger/starter/AnnotationCheckListener.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.starter.Swagger2DocumentationAutoConfiguration.java">cn/home1/oss/lib/swagger/starter/Swagger2DocumentationAutoConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.model.ApiRequest.java">com/yirendai/oss/lib/swagger/model/ApiRequest.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.SwaggerUtils.java">cn/home1/oss/lib/swagger/SwaggerUtils.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.starter.Swagger2DocumentationAutoConfiguration.java">com/yirendai/oss/lib/swagger/starter/Swagger2DocumentationAutoConfiguration.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.model.ApiResponse.java">cn/home1/oss/lib/swagger/model/ApiResponse.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.starter.NoManagementConfiguration.java">com/yirendai/oss/lib/swagger/starter/NoManagementConfiguration.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.model.ApiOperationInfo.java">cn/home1/oss/lib/swagger/model/ApiOperationInfo.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.model.ApiOperationInfo.java">com/yirendai/oss/lib/swagger/model/ApiOperationInfo.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.starter.ManagementConfiguration.java">cn/home1/oss/lib/swagger/starter/ManagementConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.ManualRequestHandler.java">com/yirendai/oss/lib/swagger/ManualRequestHandler.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.starter.NoManagementConfiguration.java">cn/home1/oss/lib/swagger/starter/NoManagementConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.swagger.SwaggerUtils.java">com/yirendai/oss/lib/swagger/SwaggerUtils.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-swagger/oss-lib-swagger-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.swagger.ManualRequestHandler.java">cn/home1/oss/lib/swagger/ManualRequestHandler.java</a>
                 </td>
                 <td>
                   0
