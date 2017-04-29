@@ -27,7 +27,7 @@ under the License.
     <item>
       <title>File: 20,
              Errors: 0,
-             Warnings: 10,
+             Warnings: 4,
              Infos: 0
       </title>
             <link>https://github.com/home1-oss/oss-lib-webmvc/oss-lib-webmvc-spring-boot-1.4.1.RELEASE/checkstyle.html</link>
@@ -122,7 +122,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  6
+                  0
                 </td>
                 <td>
                   0
