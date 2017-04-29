@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.histrix.config.HystrixApplicationListener.java">com/yirendai/oss/lib/histrix/config/HystrixApplicationListener.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.hystrix.config.HystrixProperty.java">cn/home1/oss/lib/hystrix/config/HystrixProperty.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.histrix.config.HystrixProperty.java">com/yirendai/oss/lib/histrix/config/HystrixProperty.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.hystrix.spring.config.HystrixAutoConfiguration.java">cn/home1/oss/lib/hystrix/spring/config/HystrixAutoConfiguration.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.histrix.config.SpringUtils.java">com/yirendai/oss/lib/histrix/config/SpringUtils.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.hystrix.config.HystrixApplicationListener.java">cn/home1/oss/lib/hystrix/config/HystrixApplicationListener.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.histrix.spring.config.HystrixAutoConfiguration.java">com/yirendai/oss/lib/histrix/spring/config/HystrixAutoConfiguration.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.hystrix.config.HystrixDynamicEnvironmentProperties.java">cn/home1/oss/lib/hystrix/config/HystrixDynamicEnvironmentProperties.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#com.yirendai.oss.lib.histrix.config.HystrixDynamicEnvironmentProperties.java">com/yirendai/oss/lib/histrix/config/HystrixDynamicEnvironmentProperties.java</a>
+                  <a href="https://github.com/home1-oss/oss-lib-hystrix/oss-lib-hystrix-spring-boot-1.4.2.RELEASE/checkstyle.html#cn.home1.oss.lib.hystrix.config.SpringUtils.java">cn/home1/oss/lib/hystrix/config/SpringUtils.java</a>
                 </td>
                 <td>
                   0
