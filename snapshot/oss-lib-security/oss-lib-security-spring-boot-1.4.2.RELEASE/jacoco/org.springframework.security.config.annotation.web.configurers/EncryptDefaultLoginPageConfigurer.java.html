@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EncryptDefaultLoginPageConfigurer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-lib-security-spring-boot-1.4.2.RELEASE</a> &gt; <a href="index.source.html" class="el_package">org.springframework.security.config.annotation.web.configurers</a> &gt; <span class="el_source">EncryptDefaultLoginPageConfigurer.java</span></div><h1>EncryptDefaultLoginPageConfigurer.java</h1><pre class="source lang-java linenums">package org.springframework.security.config.annotation.web.configurers;
 
-import static com.yirendai.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint.templateEntryPoint;
+import static cn.home1.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint.templateEntryPoint;
 import static org.springframework.util.ClassUtils.isAssignableValue;
 import static org.springframework.util.ReflectionUtils.findField;
 import static org.springframework.util.ReflectionUtils.getField;
 import static org.springframework.util.ReflectionUtils.makeAccessible;
 
-import com.yirendai.oss.lib.errorhandle.api.ExceptionResolver;
-import com.yirendai.oss.lib.errorhandle.api.ResolvedError;
-import com.yirendai.oss.lib.security.internal.template.EncryptDefaultLoginPageGeneratingFilter;
-import com.yirendai.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint;
-import com.yirendai.oss.lib.webmvc.api.TypeSafeCookie;
+import cn.home1.oss.lib.errorhandle.api.ExceptionResolver;
+import cn.home1.oss.lib.errorhandle.api.ResolvedError;
+import cn.home1.oss.lib.security.internal.template.EncryptDefaultLoginPageGeneratingFilter;
+import cn.home1.oss.lib.security.internal.template.TemplateAuthenticationEntryPoint;
+import cn.home1.oss.lib.webmvc.api.TypeSafeCookie;
 
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.web.AuthenticationEntryPoint;

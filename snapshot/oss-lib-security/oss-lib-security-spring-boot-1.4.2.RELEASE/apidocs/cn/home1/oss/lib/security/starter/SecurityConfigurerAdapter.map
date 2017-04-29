@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./PreAuthConfiguration.html" title="cn.home1.oss.lib.security.starter.PreAuthConfiguration" alt="" coords="16,459,421,675"/>
+<area shape="rect" id="node1" href="./PreAuthConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="5,453,432,680"/>
+<area shape="rect" id="node2_1" href="./VerifyCodeConfiguration.html" title="cn.home1.oss.lib.security.starter.VerifyCodeConfiguration" alt="" coords="467,511,706,623"/>
+<area shape="rect" id="node2" href="./VerifyCodeConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="457,505,717,628"/>
+<area shape="rect" id="node3_2" href="./SecurityConfigurer.html" title="cn.home1.oss.lib.security.starter.SecurityConfigurer" alt="" coords="852,11,1201,175"/>
+<area shape="rect" id="node3" href="./SecurityConfigurer.html" title="&lt;TABLE&gt;" alt="" coords="841,6,1212,181"/>
+<area shape="rect" id="node8_3" href="./SecurityConfigurerAdapter.html" title="cn.home1.oss.lib.security.starter.SecurityConfigurerAdapter" alt="" coords="824,235,1229,365"/>
+<area shape="rect" id="node8" href="./SecurityConfigurerAdapter.html" title="&lt;TABLE&gt;" alt="" coords="813,230,1240,370"/>
+<area shape="rect" id="node4_4" href="./CsrfConfiguration.html" title="cn.home1.oss.lib.security.starter.CsrfConfiguration" alt="" coords="751,519,953,614"/>
+<area shape="rect" id="node4" href="./CsrfConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="741,514,963,619"/>
+<area shape="rect" id="node5_5" href="./FormAuthConfiguration.html" title="cn.home1.oss.lib.security.starter.FormAuthConfiguration" alt="" coords="998,424,1407,709"/>
+<area shape="rect" id="node5" href="./FormAuthConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="987,419,1418,715"/>
+<area shape="rect" id="node6_6" href="./BasicAuthConfiguration.html" title="cn.home1.oss.lib.security.starter.BasicAuthConfiguration" alt="" coords="1453,502,1981,631"/>
+<area shape="rect" id="node6" href="./BasicAuthConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="1443,497,1992,637"/>
+<area shape="rect" id="node7_7" href="./PermitedRequestConfiguration.html" title="cn.home1.oss.lib.security.starter.PermitedRequestConfiguration" alt="" coords="2027,476,2341,657"/>
+<area shape="rect" id="node7" href="./PermitedRequestConfiguration.html" title="&lt;TABLE&gt;" alt="" coords="2017,471,2351,663"/>
+</map>

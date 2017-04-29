@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SecurityApiListingPlugin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-lib-security-spring-boot-1.4.2.RELEASE</a> &gt; <a href="index.source.html" class="el_package">cn.home1.oss.lib.security.swagger</a> &gt; <span class="el_source">SecurityApiListingPlugin.java</span></div><h1>SecurityApiListingPlugin.java</h1><pre class="source lang-java linenums">package cn.home1.oss.lib.security.swagger;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Sets.newHashSet;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.util.ReflectionUtils;
+
+import springfox.documentation.builders.ApiListingBuilder;
+import springfox.documentation.schema.ModelRef;
+import springfox.documentation.service.AllowableListValues;
+import springfox.documentation.service.ApiDescription;
+import springfox.documentation.service.Operation;
+import springfox.documentation.service.Parameter;
+import springfox.documentation.service.ResponseMessage;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.ApiListingBuilderPlugin;
+import springfox.documentation.spi.service.contexts.ApiListingContext;
+import springfox.documentation.spi.service.contexts.DocumentationContext;
+import springfox.documentation.swagger.common.SwaggerPluginSupport;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * Created by zhanghaolun on 16/10/31.
+ */
+@Deprecated
+@Order(value = SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER)
+<span class="nc" id="L39">public class SecurityApiListingPlugin implements ApiListingBuilderPlugin { //</span>
+  // ApiListingScannerPlugin not working, debug at DocumentationPluginsManager#additionalListings
+
+  //  @Override
+  public List&lt;ApiDescription&gt; apply(final DocumentationContext context) {
+<span class="nc" id="L44">    return this.additionalOperations();</span>
+  }
+
+  //  @Override
+  public void apply(final ApiListingContext apiListingContext) {
+    //ApiListingBuilderPlugin, this will override all api
+    //  apiListingContext.apiListingBuilder() //
+    //  .apis(this.additionalOperations());
+
+<span class="nc" id="L53">    final Class&lt;?&gt; controllerClass = apiListingContext.getResourceGroup().getControllerClass();</span>
+<span class="nc bnc" id="L54" title="All 4 branches missed.">    if (controllerClass != null &amp;&amp; !controllerClass.getName().startsWith(&quot;org.springframework.boot.actuate&quot;)) {</span>
+<span class="nc" id="L55">      final ApiListingBuilder builder = apiListingContext.apiListingBuilder();</span>
+<span class="nc" id="L56">      final Field field = ReflectionUtils.findField(builder.getClass(), &quot;apis&quot;);</span>
+<span class="nc" id="L57">      ReflectionUtils.makeAccessible(field);</span>
+<span class="nc" id="L58">      final Object value = Optional.ofNullable(ReflectionUtils.getField(field, builder)) //</span>
+<span class="nc" id="L59">        .orElse(Collections.emptyList());</span>
+      @SuppressWarnings(&quot;unchecked&quot;)
+<span class="nc" id="L61">      final List&lt;ApiDescription&gt; apis = (List&lt;ApiDescription&gt;) value;</span>
+
+<span class="nc" id="L63">      final List&lt;ApiDescription&gt; newApis = new ArrayList&lt;&gt;(apis);</span>
+<span class="nc" id="L64">      newApis.addAll(this.additionalOperations());</span>
+
+<span class="nc" id="L66">      builder.apis(newApis);</span>
+    }
+<span class="nc" id="L68">  }</span>
+
+  @Override
+  public boolean supports(final DocumentationType documentationType) {
+<span class="nc" id="L72">    return DocumentationType.SWAGGER_2.equals(documentationType);</span>
+  }
+
+  private List&lt;ApiDescription&gt; additionalOperations() {
+<span class="nc" id="L76">    return Lists.newArrayList(</span>
+      new ApiDescription( // apiDescription
+        &quot;/oauth/token&quot;, // path
+        &quot;security endpoints&quot;, // description, not showed
+<span class="nc" id="L80">        Lists.newArrayList( // operations</span>
+          new Operation( // operation
+            HttpMethod.POST, // method
+            &quot;Retrieve Access Token&quot;, // summary
+            &quot;&quot;, // notes
+            null, // responseModel
+            &quot;oauth-token&quot;, // uniqueId
+            0, // position
+<span class="nc" id="L88">            Sets.newHashSet(&quot;oauth2-filter&quot;), // tags</span>
+<span class="nc" id="L89">            newHashSet(MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE), // produces</span>
+<span class="nc" id="L90">            newHashSet(MediaType.APPLICATION_FORM_URLENCODED_VALUE), // consumes</span>
+<span class="nc" id="L91">            Collections.emptySet(), // protocol</span>
+<span class="nc" id="L92">            newArrayList(), // securityReferences</span>
+<span class="nc" id="L93">            Lists.newArrayList( // parameters</span>
+              new Parameter( // parameter
+                &quot;grant_type&quot;, // name
+                &quot;Grant type&quot;, // description
+                &quot;client_credentials&quot;, // defaultValue
+                true, // required
+                false, // allowMultiple
+                new ModelRef(&quot;java.lang.String&quot;), // modelRef
+                null, // type
+<span class="nc" id="L102">                new AllowableListValues(newArrayList(&quot;client_credentials&quot;, &quot;authorize_code&quot;), &quot;String&quot;),</span>
+                // allowableValues
+                &quot;form&quot;, // paramType
+                &quot;&quot;, // paramAccess
+                false, // hidden
+<span class="nc" id="L107">                newArrayList() // vendorExtensions</span>
+              )
+            ),
+<span class="nc" id="L110">            Sets.newHashSet( // responseMessages</span>
+              new ResponseMessage( // responseMessage
+<span class="nc" id="L112">                HttpStatus.OK.value(), // code</span>
+<span class="nc" id="L113">                HttpStatus.OK.getReasonPhrase(), // message</span>
+                new ModelRef(&quot;org.springframework.security.oauth2.common.DefaultOAuth2AccessToken&quot;), // responseModel
+<span class="nc" id="L115">                Collections.emptyMap(), // headers</span>
+<span class="nc" id="L116">                newArrayList() // vendorExtensions</span>
+              )
+            ),
+            null, // deprecated
+            false, // isHidden
+<span class="nc" id="L121">            newArrayList() // vendorExtensions</span>
+          )
+        ),
+<span class="nc" id="L124">        false // hidden</span>
+      )
+    );
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
