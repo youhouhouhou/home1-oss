@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#com.yirendai.oss.environment.configlint.ValidateRunner.java">com/yirendai/oss/environment/configlint/ValidateRunner.java</a>
+                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#cn.home1.oss.environment.configlint.ValidateRunner.java">cn/home1/oss/environment/configlint/ValidateRunner.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#com.yirendai.oss.environment.configlint.YmlValidator.java">com/yirendai/oss/environment/configlint/YmlValidator.java</a>
+                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#cn.home1.oss.environment.configlint.FileValidator.java">cn/home1/oss/environment/configlint/FileValidator.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#com.yirendai.oss.environment.configlint.ConfigLintApplication.java">com/yirendai/oss/environment/configlint/ConfigLintApplication.java</a>
+                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#cn.home1.oss.environment.configlint.PropertyValidator.java">cn/home1/oss/environment/configlint/PropertyValidator.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#com.yirendai.oss.environment.configlint.PropertyValidator.java">com/yirendai/oss/environment/configlint/PropertyValidator.java</a>
+                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#cn.home1.oss.environment.configlint.ConfigLintApplication.java">cn/home1/oss/environment/configlint/ConfigLintApplication.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#com.yirendai.oss.environment.configlint.FileValidator.java">com/yirendai/oss/environment/configlint/FileValidator.java</a>
+                  <a href="https://github.com/home1-oss/oss-configlint/checkstyle.html#cn.home1.oss.environment.configlint.YmlValidator.java">cn/home1/oss/environment/configlint/YmlValidator.java</a>
                 </td>
                 <td>
                   0
