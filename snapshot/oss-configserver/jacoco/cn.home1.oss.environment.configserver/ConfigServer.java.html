@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConfigServer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">cn.home1.oss.environment.configserver</a> &gt; <span class="el_source">ConfigServer.java</span></div><h1>ConfigServer.java</h1><pre class="source lang-java linenums">package cn.home1.oss.environment.configserver;
+
+import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
+
+import cn.home1.oss.lib.common.Jackson2Utils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.SneakyThrows;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.eclipse.jgit.transport.SshSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.cloud.config.server.EnableConfigServer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.File;
+import java.io.InputStream;
+
+@Controller
+@EnableConfigServer
+@EnableEurekaClient
+@EnableTransactionManagement
+@SpringBootApplication
+<span class="nc" id="L37">public class ConfigServer {</span>
+
+  @Autowired
+  private Environment environment;
+
+  @RequestMapping(path = &quot;/&quot;)
+  public String index() {
+<span class="nc" id="L44">    return &quot;redirect:/index.html&quot;;</span>
+  }
+
+  public static void main(final String... args) {
+<span class="nc" id="L48">    SpringApplication.run(ConfigServer.class, args);</span>
+<span class="nc" id="L49">  }</span>
+
+  @Configuration
+  @Order(HIGHEST_PRECEDENCE)
+<span class="nc" id="L53">  public static class DeployKeyConfiguration {</span>
+
+    @Value(&quot;${spring.cloud.config.server.deployKey}&quot;)
+    public void setDeployKey(final String deployKey) {
+<span class="nc" id="L57">      final String keyPath = getDeployKeyPath(deployKey);</span>
+<span class="nc" id="L58">      SshSessionFactory.setInstance(new CustomKeySshSessionFactory(keyPath));</span>
+<span class="nc" id="L59">    }</span>
+  }
+
+<span class="nc" id="L62">  @SneakyThrows</span>
+  private static String getDeployKeyPath(final String deployKey) {
+    final String deployKeyPath;
+<span class="nc bnc" id="L65" title="All 2 branches missed.">    if (deployKey.startsWith(&quot;classpath:&quot;)) {</span>
+      // see: http://www.baeldung.com/convert-input-stream-to-a-file
+<span class="nc" id="L67">      final String fileName = StringUtils.replaceOnce(deployKey, &quot;classpath:&quot;, &quot;&quot;);</span>
+<span class="nc" id="L68">      final InputStream initialStream = ConfigServer.class.getClassLoader().getResourceAsStream(fileName);</span>
+<span class="nc" id="L69">      final String userHome = System.getProperty(&quot;user.home&quot;);</span>
+<span class="nc" id="L70">      final String dataDir = userHome + &quot;/data/configserver&quot;;</span>
+<span class="nc" id="L71">      FileUtils.forceMkdir(new File(dataDir));</span>
+<span class="nc" id="L72">      final File targetFile = new File(dataDir + &quot;/deploy_key&quot;);</span>
+<span class="nc" id="L73">      FileUtils.copyInputStreamToFile(initialStream, targetFile);</span>
+<span class="nc" id="L74">      deployKeyPath = targetFile.getPath();</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">    } else if (deployKey.startsWith(&quot;file:&quot;)) {</span>
+<span class="nc" id="L76">      deployKeyPath = StringUtils.replaceOnce(deployKey, &quot;file:&quot;, &quot;&quot;);</span>
+    } else {
+<span class="nc" id="L78">      deployKeyPath = deployKey;</span>
+    }
+<span class="nc" id="L80">    return deployKeyPath;</span>
+  }
+
+  @Bean
+  @ConditionalOnProperty(value = &quot;spring.cloud.config.server.monitor.gitlabpath.enabled&quot;, havingValue = &quot;true&quot;)
+  public GitlabpathPropertyPathNotificationExtractor gitlabPropertyPathNotificationExtractor() {
+<span class="nc" id="L86">    return new GitlabpathPropertyPathNotificationExtractor();</span>
+  }
+
+  @Bean
+  @ConditionalOnProperty(value = &quot;spring.cloud.config.server.monitor.gitlabpath.enabled&quot;, havingValue = &quot;true&quot;)
+  public GogsPropertyPathNotificationExtractor gogsPropertyPathNotificationExtractor() {
+<span class="nc" id="L92">    return new GogsPropertyPathNotificationExtractor();</span>
+  }
+
+  @Autowired
+  public void setObjectMapper(final ObjectMapper objectMapper) {
+<span class="nc" id="L97">    Jackson2Utils.setupObjectMapper(this.environment, objectMapper); // for GrantedAuthority</span>
+<span class="nc" id="L98">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

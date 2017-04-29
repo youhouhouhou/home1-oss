@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserContoller.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">cn.home1.oss.environment.configserver</a> &gt; <span class="el_source">UserContoller.java</span></div><h1>UserContoller.java</h1><pre class="source lang-java linenums">package cn.home1.oss.environment.configserver;
+
+import static com.google.common.base.Preconditions.checkArgument;
+import static java.lang.Boolean.TRUE;
+import static org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
+import com.google.common.collect.ImmutableMap;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.security.Principal;
+import java.util.List;
+import java.util.Map;
+
+@RequestMapping(&quot;${spring.cloud.config.server.prefix:}/users&quot;)
+@RestController
+<span class="nc" id="L32">@Slf4j</span>
+<span class="nc" id="L33">public class UserContoller {</span>
+
+  @Autowired
+  private UserService userService;
+
+  @RequestMapping(value = &quot;/login&quot;, method = {POST}, produces = {APPLICATION_JSON_VALUE})
+  public Map&lt;String, Object&gt; login(final Principal principal) {
+    final Map&lt;String, Object&gt; result;
+<span class="nc bnc" id="L41" title="All 4 branches missed.">    if (principal != null &amp;&amp; UsernamePasswordAuthenticationToken.class.isAssignableFrom(principal.getClass())) {</span>
+<span class="nc" id="L42">      final UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) principal;</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">      if (authenticationToken.isAuthenticated() &amp;&amp; //</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">          authenticationToken.getPrincipal() != null &amp;&amp; //</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">          User.class.isAssignableFrom(authenticationToken.getPrincipal().getClass())) {</span>
+<span class="nc" id="L46">        final User user = (User) authenticationToken.getPrincipal();</span>
+<span class="nc" id="L47">        final String modifiedUsername = user.getUsername();</span>
+<span class="nc" id="L48">        final String restoredUsername = Security.restoreUsername(modifiedUsername);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        checkArgument(!Security.USER_WEBHOOK.equals(restoredUsername), Security.USER_WEBHOOK + &quot; is not allowed.&quot;);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if (user.getAuthorities().contains(new SimpleGrantedAuthority(Security.ROLE_USER))) {</span>
+<span class="nc" id="L51">          result = ImmutableMap.of( //</span>
+              &quot;username&quot;, Security.USER_USER, //
+              &quot;application&quot;, restoredUsername, //
+<span class="nc" id="L54">              &quot;authorities&quot;, user.getAuthorities() //</span>
+          );
+        } else {
+<span class="nc" id="L57">          result = ImmutableMap.of( //</span>
+              &quot;username&quot;, restoredUsername, //
+              &quot;application&quot;, &quot;*&quot;, //
+<span class="nc" id="L60">              &quot;authorities&quot;, user.getAuthorities() //</span>
+          );
+        }
+<span class="nc" id="L63">      } else {</span>
+<span class="nc" id="L64">        result = null;</span>
+      }
+<span class="nc" id="L66">    } else {</span>
+<span class="nc" id="L67">      result = null;</span>
+    }
+<span class="nc" id="L69">    return result;</span>
+  }
+
+  @RequestMapping(value = &quot;/&quot;, method = GET, produces = {APPLICATION_JSON_VALUE})
+  public List&lt;Map&lt;String, String&gt;&gt; getUsers() {
+<span class="nc" id="L74">    return this.userService.getUsers();</span>
+  }
+
+  @RequestMapping(value = &quot;/{application}/&quot;, method = POST, consumes = {APPLICATION_FORM_URLENCODED_VALUE})
+  public void createUser( //
+      final @PathVariable(&quot;application&quot;) String application, //
+      final @RequestParam(name = &quot;password&quot;) String password //
+  ) {
+<span class="nc" id="L82">    final String username = Security.USER_USER;</span>
+<span class="nc" id="L83">    this.userService.createUser(application, username, password);</span>
+<span class="nc" id="L84">  }</span>
+
+  @RequestMapping(value = &quot;/{application}/&quot;, method = DELETE)
+  public void deleteUser( //
+      final @PathVariable(&quot;application&quot;) String application
+  ) {
+<span class="nc" id="L90">    final String username = Security.USER_USER;</span>
+<span class="nc" id="L91">    this.userService.deleteUser(application, username, TRUE);</span>
+<span class="nc" id="L92">  }</span>
+
+  @RequestMapping(value = &quot;/{application}/&quot;, method = GET, produces = {APPLICATION_JSON_VALUE})
+  public UserDetails getUser( //
+      final @PathVariable(&quot;application&quot;) String application
+  ) {
+<span class="nc" id="L98">    final String username = Security.USER_USER;</span>
+<span class="nc" id="L99">    return this.userService.getUser(application, username);</span>
+  }
+
+  @RequestMapping(value = &quot;/{application}/&quot;, method = PUT, consumes = {APPLICATION_FORM_URLENCODED_VALUE})
+  public void updateUser(
+      final @PathVariable(&quot;application&quot;) String application, //
+      final @RequestParam(name = &quot;password&quot;) String password //
+  ) {
+<span class="nc" id="L107">    final String username = Security.USER_USER;</span>
+<span class="nc" id="L108">    this.userService.updateUser(application, username, password);</span>
+<span class="nc" id="L109">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

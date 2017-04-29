@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsernameModifyFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">cn.home1.oss.environment.configserver</a> &gt; <span class="el_source">UsernameModifyFilter.java</span></div><h1>UsernameModifyFilter.java</h1><pre class="source lang-java linenums">package cn.home1.oss.environment.configserver;
+
+import static cn.home1.oss.boot.autoconfigure.PathUtils.isManagementPath;
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import static org.apache.commons.lang3.StringUtils.replaceOnce;
+
+import cn.home1.oss.lib.common.BasicAuthUtils;
+
+import lombok.Data;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.util.Assert;
+import org.springframework.web.filter.GenericFilterBean;
+
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Note: Not a bean, avoid auto pick-up.
+ * Created by zhanghaolun on 16/9/14.
+ */
+<span class="fc" id="L34">@Slf4j</span>
+<span class="nc" id="L35">public class UsernameModifyFilter extends GenericFilterBean {</span>
+
+<span class="pc bnc" id="L37" title="All 36 branches missed.">  @Data</span>
+  public static final class ConfigCoords {
+
+<span class="fc" id="L40">    private final String application;</span>
+<span class="nc" id="L41">    private final String label;</span>
+<span class="nc" id="L42">    private final String profile;</span>
+<span class="nc" id="L43">    private final String ext;</span>
+  }
+
+<span class="fc" id="L46">  public static final Pattern PATH_PATTERN = Pattern.compile(&quot;^/([^/]+)/([^/]+)(/([^/]+)?)?&quot;);</span>
+<span class="fc" id="L47">  public static final Pattern FILE_PATTERN = Pattern.compile(&quot;^(/[^/]+)?/(.+)-(.+)\\.(json|properties|yaml|yml)&quot;);</span>
+
+<span class="nc" id="L49">  private String credentialsCharset = &quot;UTF-8&quot;;</span>
+
+<span class="nc" id="L51">  @Setter</span>
+  private String adminUsername;
+<span class="nc" id="L53">  @Setter</span>
+  private String configServerPrefix;
+  private RequestMatcher loginRequestMatcher;
+<span class="nc" id="L56">  @Setter</span>
+  private RequestMatcher managementRequestMatcher;
+
+  public void setLoginEndpoint(final String loginEndpoint) {
+<span class="nc" id="L60">    this.loginRequestMatcher = new AntPathRequestMatcher(loginEndpoint);</span>
+<span class="nc" id="L61">  }</span>
+
+  public void setManagementContextPath(final String managementContextPath) {
+<span class="nc bnc" id="L64" title="All 2 branches missed.">    this.managementRequestMatcher = request -&gt; request != null //</span>
+<span class="nc" id="L65">        ? isManagementPath(managementContextPath, request.getServletPath()) : false;</span>
+<span class="nc" id="L66">  }</span>
+
+  @Override
+  public void doFilter( //
+      final ServletRequest req, //
+      final ServletResponse res, //
+      final FilterChain chain //
+  ) throws IOException, ServletException {
+<span class="nc" id="L74">    final HttpServletRequest request = (HttpServletRequest) req;</span>
+<span class="nc" id="L75">    final HttpServletResponse response = (HttpServletResponse) res;</span>
+
+<span class="nc" id="L77">    final String[] tokens = this.tokens(request);</span>
+
+<span class="nc bnc" id="L79" title="All 6 branches missed.">    if (this.loginRequestMatcher != null &amp;&amp; this.loginRequestMatcher.matches(request) &amp;&amp; tokens != null) {</span>
+<span class="nc" id="L80">      final String applicationOrUsername = tokens[0];</span>
+
+<span class="nc bnc" id="L82" title="All 2 branches missed.">      if (this.adminUsername.equals(applicationOrUsername)) { // admin</span>
+<span class="nc" id="L83">        chain.doFilter(request, response);</span>
+      } else {
+<span class="nc" id="L85">        final String name = Security.modifyUsername(applicationOrUsername, Security.USER_USER);</span>
+<span class="nc" id="L86">        final String headerValue = BasicAuthUtils.basicAuthHeader(name, tokens[1]);</span>
+<span class="nc" id="L87">        chain.doFilter(new AuthorizationHeaderWrapper(request, headerValue), response);</span>
+      }
+<span class="nc bnc" id="L89" title="All 4 branches missed.">    } else if (!this.managementRequestMatcher.matches(request) &amp;&amp; tokens != null) {</span>
+<span class="nc" id="L90">      final ConfigCoords configCoords = this.extractConfigCoords(request);</span>
+<span class="nc" id="L91">      final String application = configCoords.getApplication();</span>
+
+<span class="nc" id="L93">      final String username = tokens[0];</span>
+
+<span class="nc bnc" id="L95" title="All 4 branches missed.">      if (Security.USER_USER.equals(username) &amp;&amp; isNotBlank(application)) {</span>
+<span class="nc" id="L96">        final String name = Security.modifyUsername(application, Security.USER_USER);</span>
+<span class="nc" id="L97">        final String headerValue = BasicAuthUtils.basicAuthHeader(name, tokens[1]);</span>
+<span class="nc" id="L98">        chain.doFilter(new AuthorizationHeaderWrapper(request, headerValue), response);</span>
+<span class="nc" id="L99">      } else { // admin</span>
+<span class="nc" id="L100">        chain.doFilter(request, response);</span>
+      }
+<span class="nc" id="L102">    } else {</span>
+<span class="nc" id="L103">      chain.doFilter(request, response);</span>
+    }
+<span class="nc" id="L105">  }</span>
+
+  private String[] tokens(final HttpServletRequest request) {
+<span class="nc" id="L108">    final String header = request.getHeader(BasicAuthUtils.BASIC_AUTH_HEADE_NAME);</span>
+<span class="nc bnc" id="L109" title="All 4 branches missed.">    final boolean hasBasicAuthHeader = header != null &amp;&amp; header.startsWith(&quot;Basic &quot;);</span>
+    final String[] tokens;
+<span class="nc bnc" id="L111" title="All 2 branches missed.">    if (hasBasicAuthHeader) {</span>
+<span class="nc" id="L112">      tokens = BasicAuthUtils.extractAndDecodeAuthHeader(header, this.getCredentialsCharset(request));</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">      checkArgument(tokens.length == 2, &quot;invalid basic auth header&quot;);</span>
+    } else {
+<span class="nc" id="L115">      tokens = null;</span>
+    }
+<span class="nc" id="L117">    return tokens;</span>
+  }
+
+  public void setCredentialsCharset(final String credentialsCharset) {
+<span class="nc" id="L121">    Assert.hasText(credentialsCharset, &quot;credentialsCharset cannot be null or empty&quot;);</span>
+<span class="nc" id="L122">    this.credentialsCharset = credentialsCharset;</span>
+<span class="nc" id="L123">  }</span>
+
+  protected String getCredentialsCharset(final HttpServletRequest httpRequest) {
+<span class="nc bnc" id="L126" title="All 2 branches missed.">    return this.credentialsCharset != null ? this.credentialsCharset : httpRequest.getCharacterEncoding();</span>
+  }
+
+  private ConfigCoords extractConfigCoords(final HttpServletRequest request) {
+<span class="nc" id="L130">    final String servletPath = request.getServletPath();</span>
+<span class="nc bnc" id="L131" title="All 2 branches missed.">    final String path = isNotBlank(this.configServerPrefix) ? //</span>
+<span class="nc" id="L132">        replaceOnce(servletPath, this.configServerPrefix, &quot;&quot;) : //</span>
+        servletPath;
+<span class="nc" id="L134">    return extractConfigCoords(path);</span>
+  }
+
+  /**
+   * /{application}/{profile}[/{label}]
+   * /{application}-{profile}.yml
+   * /{label}/{application}-{profile}.yml
+   * /{application}-{profile}.properties
+   * /{label}/{application}-{profile}.properties
+   */
+  public static ConfigCoords extractConfigCoords(final String path) {
+<span class="fc" id="L145">    final Matcher fileMatcher = FILE_PATTERN.matcher(path);</span>
+<span class="fc" id="L146">    final Matcher pathMatcher = PATH_PATTERN.matcher(path);</span>
+
+    final String application;
+    final String profile;
+    final String label;
+    final String ext;
+<span class="fc bfc" id="L152" title="All 2 branches covered.">    if (fileMatcher.matches()) {</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">      label = fileMatcher.group(1) != null ? fileMatcher.group(1).substring(1) : &quot;&quot;; // could be null if not found</span>
+<span class="fc" id="L154">      application = fileMatcher.group(2);</span>
+<span class="fc" id="L155">      profile = fileMatcher.group(3);</span>
+<span class="fc" id="L156">      ext = fileMatcher.group(4);</span>
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">    } else if (pathMatcher.matches()) { // pathMatcher.find()</span>
+<span class="fc" id="L158">      application = pathMatcher.group(1);</span>
+<span class="fc" id="L159">      profile = pathMatcher.group(2);</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">      label = pathMatcher.group(3) != null ? pathMatcher.group(3).substring(1) : &quot;&quot;;</span>
+<span class="fc" id="L161">      ext = &quot;&quot;;</span>
+    } else {
+<span class="nc" id="L163">      application = &quot;&quot;;</span>
+<span class="nc" id="L164">      profile = &quot;&quot;;</span>
+<span class="nc" id="L165">      label = &quot;&quot;;</span>
+<span class="nc" id="L166">      ext = &quot;&quot;;</span>
+    }
+<span class="fc" id="L168">    return new ConfigCoords(application, label, profile, ext);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

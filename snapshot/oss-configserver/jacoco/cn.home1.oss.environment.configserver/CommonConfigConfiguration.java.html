@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommonConfigConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">oss-configserver</a> &gt; <a href="index.source.html" class="el_package">cn.home1.oss.environment.configserver</a> &gt; <span class="el_source">CommonConfigConfiguration.java</span></div><h1>CommonConfigConfiguration.java</h1><pre class="source lang-java linenums">package cn.home1.oss.environment.configserver;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cloud.config.server.config.ConfigServerProperties;
+import org.springframework.cloud.config.server.config.EnvironmentRepositoryConfiguration;
+import org.springframework.cloud.config.server.environment.EnvironmentRepository;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.ConfigurableEnvironment;
+
+@Configuration
+@ConditionalOnMissingBean(EnvironmentRepository.class)
+@ConditionalOnProperty(prefix = &quot;spring.cloud.config.server.commonConfig&quot;, name = &quot;enabled&quot;, havingValue = &quot;true&quot;)
+<span class="nc" id="L19">public class CommonConfigConfiguration extends EnvironmentRepositoryConfiguration {</span>
+
+  @Configuration
+  @ConditionalOnMissingBean(EnvironmentRepository.class)
+  @ConditionalOnProperty(prefix = &quot;spring.cloud.config.server.commonConfig.git&quot;, name = &quot;uri&quot;)
+  @EnableConfigurationProperties(value = {ConfigServerProperties.class, CommonConfigProperties.class})
+<span class="nc" id="L25">  public static class GitRepositoryConfiguration {</span>
+
+    @Autowired
+    private ConfigurableEnvironment environment;
+
+    @Autowired
+    private ConfigServerProperties configServerProperties;
+
+    @Autowired
+    private CommonConfigProperties commonConfigProperties;
+
+    @Bean
+    @ConditionalOnMissingBean(EnvironmentRepository.class)
+    public EnvironmentRepository environmentRepository() {
+      // common-config
+<span class="nc" id="L40">      final String label = this.commonConfigProperties.getLabel();</span>
+<span class="nc" id="L41">      final CommonConfigRepository commonConfigRepository = this.commonConfigProperties.getGit();</span>
+<span class="nc" id="L42">      commonConfigRepository.setApplication(this.commonConfigProperties.getApplication());</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">      commonConfigRepository.setLabel(isNotBlank(label) ? label : commonConfigRepository.getDefaultLabel());</span>
+
+      // multiple
+<span class="nc" id="L46">      final CommonConfigSupportedMultipleJGitEnvironmentRepository repository =</span>
+          new CommonConfigSupportedMultipleJGitEnvironmentRepository(this.environment);
+<span class="nc" id="L48">      repository.setCommonConfigRepository(commonConfigRepository);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">      if (this.configServerProperties.getDefaultLabel() != null) {</span>
+<span class="nc" id="L50">        repository.setDefaultLabel(this.configServerProperties.getDefaultLabel());</span>
+      }
+
+<span class="nc" id="L53">      return repository;</span>
+    }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
