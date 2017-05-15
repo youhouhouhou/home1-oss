@@ -77,4 +77,10 @@
 ### k8s
 
 1. [图文基于rancher搭建k8s](K8S_PIC.md)
+2. [k8s实战网上教程，基本是官网翻译，只是版本旧些，注意里面的rc已经被rs取代](http://blog.csdn.net/ztsinghua/article/details/52411483)
+   
+   
+### gitlab ci runner 
+   
+因为项目需要集成测试，所有ci runner部署在k8s中，这样避免了'跨域'访问问题。
    
