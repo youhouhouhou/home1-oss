@@ -56,3 +56,25 @@
     - oss/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置
     - oss/oss-todomvc-gateway-config       todomvc-gateway配置
     - oss/oss-todomvc-app-config           todomvc-app配置 
+    
+### jenkins
+    
+1. [jenkins搭建](JENKINS.md)
+2. [ldap配置](JENKINS_LDAP.md)
+3. [jenkins slave搭建](JENKINS_SWARM_SLAVE.md)
+
+## rancher + k8s
+
+### rancher
+
+1. [rancher github](https://github.com/rancher/rancher)
+2. 安装注意事项
+   - 版本选择 rancher/server:stable and rancher/server:latest
+   - 环境问题 主要是docker的版本
+   - 安装 非常简单执行 docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
+   - 访问8080端口查看
+
+### k8s
+
+1. [图文基于rancher搭建k8s](K8S_PIC.md)
+   
