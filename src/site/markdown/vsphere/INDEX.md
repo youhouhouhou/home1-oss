@@ -52,7 +52,7 @@
     gitlab搭建完毕后，可从github引入样例项目
 
     - oss/oss-jenkins-pipeline             负责jenkins pipeline部署的项目
-    - oss/oss-todomvc                      样例项目(引入后需要稍加修改ci.sh脚本，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致)   
+    - oss/oss-todomvc                      样例项目(引入后需要稍加修改ci.sh脚本，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致，还有脚本最后有跳过执行步骤的，直接去掉判断)   
     - oss/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置
     - oss/oss-todomvc-gateway-config       todomvc-gateway配置
     - oss/oss-todomvc-app-config           todomvc-app配置 
@@ -91,4 +91,7 @@
 因为项目需要集成测试，所有ci runner部署在k8s中，这样避免了'跨域'访问问题。
 
 - [gitlab-ci-runner k8s环境搭建](GITLAB_CI_RUNNER.md)
+   
+
+## 正常开发注意事项   
    
