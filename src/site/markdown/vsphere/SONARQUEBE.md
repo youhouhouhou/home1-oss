@@ -10,6 +10,15 @@
     git clone git@github.com:home1-oss/oss-docker.git # 构建postgress数据库服务
     git clone git@github.com:home1-oss/docker-sonarqube.git # 构建sonarqube服务
 
+
+## 设置环境变量
+
+修改 ~/.bashrc 文件，增加如下内容
+
+- export DOCKER_REGISTRY=registry.docker.internal
+
+执行  `source .bashrc`
+
 ## 服务构建&启动
 
 ### PG数据库服务
