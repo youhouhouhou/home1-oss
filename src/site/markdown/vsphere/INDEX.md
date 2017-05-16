@@ -47,12 +47,12 @@
 
     gitlab上的服务初始化如下项目
 
-    - oss/oss-internal                     存放项目一些敏感信息
+    - oss/oss-internal                     存放项目一些敏感信息，有些需要更新比如***k8s***的配置
    
     gitlab搭建完毕后，可从github引入样例项目
 
     - oss/oss-jenkins-pipeline             负责jenkins pipeline部署的项目
-    - oss/oss-todomvc                      样例项目   
+    - oss/oss-todomvc                      样例项目(引入后需要稍加修改ci.sh脚本，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致)   
     - oss/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置
     - oss/oss-todomvc-gateway-config       todomvc-gateway配置
     - oss/oss-todomvc-app-config           todomvc-app配置 
@@ -63,15 +63,21 @@
 2. [ldap配置](JENKINS_LDAP.md)
 3. [jenkins slave搭建](JENKINS_SWARM_SLAVE.md)
 
+### sonarquebe
+
+- [sonarquebe搭建](SONARQUEBE.md)
+
 ## rancher + k8s
 
 ### rancher
+
+必要：**安装合适的docker版本**，准备环节有说明
 
 1. [rancher github](https://github.com/rancher/rancher)
 2. 安装注意事项
    - 版本选择 rancher/server:stable and rancher/server:latest
    - 环境问题 主要是docker的版本
-   - 安装 非常简单执行 docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
+   - 安装 非常简单执行 docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
    - 访问8080端口查看
 
 ### k8s
@@ -83,4 +89,6 @@
 ### gitlab ci runner 
    
 因为项目需要集成测试，所有ci runner部署在k8s中，这样避免了'跨域'访问问题。
+
+- [gitlab-ci-runner k8s环境搭建](GITLAB_CI_RUNNER.md)
    
