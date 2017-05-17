@@ -1,4 +1,24 @@
-# oss 各系统搭建流程
+# oss 各系统搭建使用流程
+
+<!-- vim-markdown-toc GFM -->
+* [环境准备](#准备工作)
+* [业务基础服务](#业务基础服务)
+  * [nexus3](#nexus3)
+  * [gitlab-server](#gitlab-server)
+  * [jenkins](#jenkins)
+  * [sonarquebe](#sonarquebe)
+* [rancher+k8s](#验证测试)
+  * [rancher](#rancher)
+  * [k8s](#k8s)
+  * [gitlab ci runner](#gitlab_ci_runner)
+* [正常开发注意事项](#正常开发注意事项)
+  * [oss-internal](#oss-internal)
+  * [oss-jenkins-pipelin](#oss-jenkins-pipelin)
+* [TODO](#TODO)
+
+<!-- vim-markdown-toc -->
+ 
+ 
  
 ## 准备工作
 
@@ -99,13 +119,15 @@
 
 ## 正常开发注意事项   
    
-oss-internal
+### oss-internal
 
 - k8s配置需更新
 - maven_opts_internal.sh里面各个服务和所搭建的环境url一致
 - maven_opts_internal.sh可定义集成测试使用的变量
 
-oss-jenkins-pipeline
+### oss-jenkins-pipeline
 
 - 脚本中默认使用ID为`jenkinsfile`的证书   
 - 兼容docker-compose,k8s部署，但是k8s项目文件夹都用-k8s结尾来区分   
+
+## TODO
