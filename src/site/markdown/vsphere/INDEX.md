@@ -72,7 +72,7 @@
     gitlab搭建完毕后，可从github引入样例项目
 
     - oss/oss-jenkins-pipeline             负责jenkins pipeline部署的项目
-    - oss/oss-todomvc                      样例项目(引入后需要稍加修改ci.sh脚本，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致，还有脚本最后有跳过执行步骤的，直接去掉判断)   
+    - oss/oss-todomvc                      样例项目(引入后需要1.稍加修改ci.sh脚本，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致，还有脚本最后有跳过执行步骤的，直接去掉判断。2.把Dockerfile中的java镜像的registry换成home1oss,或者人工pull一个到docker.registry.internal)   
     - oss/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置 **要在gitlab上配置deploy key,公钥在configserver中**
     - oss/oss-todomvc-gateway-config       todomvc-gateway配置 **要在gitlab上配置deploy key,公钥在configserver中**
     - oss/oss-todomvc-app-config           todomvc-app配置 **要在gitlab上配置deploy key,公钥在configserver中**
