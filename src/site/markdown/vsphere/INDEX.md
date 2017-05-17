@@ -56,6 +56,7 @@
     - oss/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置 **要在gitlab上配置deploy key,公钥在configserver中**
     - oss/oss-todomvc-gateway-config       todomvc-gateway配置 **要在gitlab上配置deploy key,公钥在configserver中**
     - oss/oss-todomvc-app-config           todomvc-app配置 **要在gitlab上配置deploy key,公钥在configserver中**
+    - oss/common-config                    所有项目公共配置 **要在gitlab上配置deploy key,公钥在configserver中**
     
 ### jenkins
     
@@ -104,4 +105,7 @@ oss-internal
 - maven_opts_internal.sh里面各个服务和所搭建的环境url一致
 - maven_opts_internal.sh可定义集成测试使用的变量
 
-   
+oss-jenkins-pipeline
+
+- 脚本中默认使用ID为`jenkinsfile`的证书   
+- 兼容docker-compose,k8s部署，但是k8s项目文件夹都用-k8s结尾来区分   
