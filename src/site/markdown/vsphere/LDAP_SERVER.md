@@ -13,13 +13,12 @@
 
 修改 ~/.bashrc 文件，增加如下内容
 
-- export DOCKER_REGISTRY=registry.docker.internal
-- export LDAP_HOSTNAME=ldap.internal
-- export LDAP_DOMAIN=internal
-- export LDAPADMIN_HOSTNAME=ldapadmin.internal
-
-- export LDAP_ORGANISATION=xxx   ## 有默认值
-- export LDAP_ADMIN_PASSWORD=xxx ##密码 默认admin_pass
+    export DOCKER_REGISTRY=registry.docker.internal
+    export LDAP_HOSTNAME=ldap.internal
+    export LDAP_DOMAIN=internal
+    export LDAPADMIN_HOSTNAME=ldapadmin.internal
+    export LDAP_ORGANISATION=xxx   ## 组织信息 Example
+    export LDAP_ADMIN_PASSWORD=xxx ##密码 默认admin_pass
 
 执行  `source .bashrc`
 

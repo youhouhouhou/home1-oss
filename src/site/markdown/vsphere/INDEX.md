@@ -47,7 +47,7 @@
    
 3. LDAP服务搭建，实现统一的用户管理，查看[LDAP服务器搭建](LDAP_SERVER.md)  
 
-    - [通过访问后台进行管理,全部界面化操作简单明了](http://ldapadmin.internal:6443) 账户信息: cn=admin,dc=internal/admin_pass，比如LDAP创建用户可按照[此文档](LDAP_ADDUSER_BY_LDAPADMIN.md)进行配置。
+    - [通过访问后台进行管理,全部界面化操作简单明了](https://ldapadmin.internal:6443) 账户信息: cn=admin,dc=internal/admin_pass，比如LDAP创建用户可按照[此文档](LDAP_ADDUSER_BY_LDAPADMIN.md)进行配置。
     - 进入docker容器内部直接使用 `ldapadd` 进行操作，略。
 
 ## 业务基础服务
@@ -55,7 +55,7 @@
 ### nexus3 
 
 1. [nexus3安装](NEXUS3.md) 
-2. 使用admin/admin123登录后台，[配置LDAP](NEXUS3_LDAP)
+2. 使用admin/admin123登录后台，[配置LDAP](NEXUS3_LDAP.md)
 3. 默认使用deployment/deployment账户最为maven deploy账户，若要修改秘钥同时需修改oss-internal,maven settings中的内容。
 
 

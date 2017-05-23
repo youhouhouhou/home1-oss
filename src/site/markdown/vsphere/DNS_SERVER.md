@@ -67,10 +67,10 @@ DNS服务器IP | 10.xxx.xxx.xx
 1. 在 `/etc/named.conf` 增加域，增加如下配置
 
 
-    zone "internal" IN {
-        type master;
-        file "/var/named/internal";
-    };
+        zone "internal" IN {
+            type master;
+            file "/var/named/internal";
+        };
 
 
 > 上面示例中增加了internal域，并指定了该域的配置文件位置file在`/var/named/internal`。当然的file值也可以换成其他值。
