@@ -110,7 +110,7 @@
 1. [图文基于rancher搭建k8s](K8S_PIC.md)
 2. [k8s域名后缀定制](MODIFY_K8S_DNS.md) 
 3. [k8s实战网上教程，基本是官网翻译，只是版本旧些，注意里面的rc已经被rs取代](http://blog.csdn.net/ztsinghua/article/details/52411483)
-   
+4. [基于rancher的k8s实践](RANCHER_K8S_INACTION.md)   
    
 ### gitlab ci runner 
    

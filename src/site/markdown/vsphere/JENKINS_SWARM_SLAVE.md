@@ -12,11 +12,11 @@
 
 修改 .bashrc 文件，增加如下内容
 
-- export DOCKER_REGISTRY=registry.docker.yixinonline.org      ##docker镜像仓库
-- export JENKINS_SLAVE_HOSTNAME=jenkinsslave.internal         ##salave节点域名
-- export GIT_SERVICE_TOKEN=Q2Sa-yVnoxvmmn1szpBR               ##同gitlab runner.md文档相同
-- export JENKINS_PORT_8080_TCP_ADDR=jenkins.internal          ##jenkins域名
-- export JENKINS_PORT_8080_TCP_PORT=18083   #注意 slave要是和Jenkins部署在同一太机器的话，这个端口要写成容器的端口 即8080                  ##jenkins端口
+    export DOCKER_REGISTRY=registry.docker.yixinonline.org      ##docker镜像仓库
+    export JENKINS_SLAVE_HOSTNAME=jenkinsslave.internal         ##salave节点域名
+    export GIT_SERVICE_TOKEN=Q2Sa-yVnoxvmmn1szpBR               ##同gitlab runner.md文档相同
+    export JENKINS_PORT_8080_TCP_ADDR=jenkins.internal          ##jenkins域名
+    export JENKINS_PORT_8080_TCP_PORT=18083   #注意 slave要是和Jenkins部署在同一太机器的话，这个端口要写成容器的端口 即8080                  ##jenkins端口
 
 执行 source .bashrc
 

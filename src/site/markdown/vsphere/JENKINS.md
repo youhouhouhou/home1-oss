@@ -14,8 +14,7 @@
 
 修改 .bashrc 文件，增加如下内容
 
-- export DOCKER_REGISTRY=registry.docker.internal
-- export JENKINS_HOSTNAME=jenkins.internal
+    export JENKINS_HOSTNAME=jenkins.internal
 
 执行 source .bashrc
 

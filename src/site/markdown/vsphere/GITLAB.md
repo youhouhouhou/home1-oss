@@ -15,9 +15,9 @@
 
 修改 .bashrc 文件，增加如下内容
 
-- export DOCKER_REGISTRY=registry.docker.internal  ##docker 仓库
-- export GIT_HOSTNAME=gitlab.internal                      ##gitlab的域名
-- export CONFIGSERVER_WEBHOOK_ENDPOINT=http://k8s.node1.internal:30000/monitor ##configserver回调地址 k8s nodeport方式指定node端口范围是30000-32767,conigserver指定30000
+    export DOCKER_REGISTRY=registry.docker.internal  ##docker 仓库
+    export GIT_HOSTNAME=gitlab.internal                      ##gitlab的域名
+    export CONFIGSERVER_WEBHOOK_ENDPOINT=http://k8s.node1.internal:30000/monitor ##configserver回调地址 k8s nodeport方式指定node端口范围是30000-32767,conigserver指定30000
 
 执行 source .bashrc
 
