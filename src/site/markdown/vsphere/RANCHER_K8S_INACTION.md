@@ -58,8 +58,8 @@
     > 实现Service的抽象，为一组Pod抽象的服务（Service）提供统一接口并提供负载均衡功能。
 
 ## 原理图
-![](media/14878178757094/14894837761208.jpg)
-![](media/14878178757094/14894838806795.jpg)
+![](media/images/14894837761208.jpg)
+![](media/images/14894838806795.jpg)
 
 #### Master
 - apiserver：作为kubernetes系统的入口，封装了核心对象的增删改查操作，以RESTFul接口方式提供给外部客户和内部组件调用。它维护的REST对象将持久化到etcd（一个分布式强一致性的key/value存储）。
