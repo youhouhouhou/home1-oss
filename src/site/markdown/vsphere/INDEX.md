@@ -61,9 +61,10 @@
 
 ### gitlab-server
 
-1. [gitlab-server安装](GITLAB.md)  //TODO 与外面GITLAB.md的关系。 
+1. [gitlab-server安装](GITLAB.md)  //TODO 与外面GITLAB.md的关系。
+2. [gitlab配置ldap](GITLAB_LDAP.md) 
 
-2. 项目相关
+3. 项目相关
 
     gitlab上的服务初始化如下项目
 
