@@ -24,7 +24,7 @@
 
 基础环境和服务
   
-1. 准备好一定数量的虚拟机节点，安装相应的环境，[docker,docker-compose,docker私有仓库、加速设置]()，ssh访问，网络(k8s需***翻墙***)等等。
+1. 准备好一定数量的虚拟机节点，安装相应的环境，[docker,docker-compose,docker私有仓库、加速设置](BASIC_ENV.md)，ssh访问，网络(k8s需***翻墙***)等等。
 
 2. DNS配置，oss项目使用自定义域名internal,所以需要搭建自己的服务器来服务于项目。查看[DNS服务器搭建](DNS_SERVER.md)
    
