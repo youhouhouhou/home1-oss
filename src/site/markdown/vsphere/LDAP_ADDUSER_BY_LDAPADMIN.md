@@ -1,6 +1,6 @@
 # ldap用户组与用户的添加
 
-## 使用导入功能，直接导入下面文本内容
+## 使用导入功能，直接导入下面文本内容 (fengshuangjie/user_pass)
 
         # LDIF Export for ou=oss,dc=internal
         # Server: ldap.internal (ldap.internal)
