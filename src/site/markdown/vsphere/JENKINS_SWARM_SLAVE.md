@@ -8,6 +8,9 @@
 
 - 克隆docker-jenkins项目 `git clone git@github.com:home1-oss/docker-jenkins.git`
 
+- 若是要部署到k8s环境则直接使用k8s目录下的k8s配置文件部署即可，否则接着往下操作。
+
+
 #### 设置环境变量
 
 修改 .bashrc 文件，增加如下内容
