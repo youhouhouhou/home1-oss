@@ -2,13 +2,16 @@
 
 ## 准备
 
-### DNS配置映射
+
+#### 创建slave账户
+
+登录Jenkins后添加账户 swarm/swarm_pass (**注意** 配置ldap用户体系后，需要切换回原来的用户体系来增加，或者修改配置文件中对应的账号密码即可)
 
 ### 克隆相关项目
 
 - 克隆docker-jenkins项目 `git clone git@github.com:home1-oss/docker-jenkins.git`
 
-- 若是要部署到k8s环境则直接使用k8s目录下的k8s配置文件部署即可，否则接着往下操作。
+- 若是要部署到k8s环境则直接使用k8s目录下的k8s配置文件部署即可，否则接着往下操作。(` kubectl create -f XXX.yaml`)
 
 
 #### 设置环境变量
@@ -27,9 +30,6 @@
 
     sudo chmod a+rw /var/run/docker.sock
 
-#### 创建slave账户
-
-登录Jenkins后添加账户 swarm/swarm_pass
 
 #### 启动 salve节点
 
