@@ -69,20 +69,20 @@
 1. [gitlab-server安装](GITLAB.md)  //TODO 与外面GITLAB.md的关系。
 2. [gitlab配置ldap](GITLAB_LDAP.md) 
 
-3. 项目相关
+3. 项目相关(**注意** 引入项目时分别放在`home1oss`，`configserver`组之下，若下所示 组名/项目名)
 
     gitlab上的服务初始化如下项目
 
-    - oss/oss-internal                     存放项目一些敏感信息，有些需要更新比如***k8s***的配置
+    - home1oss/oss-internal                     存放项目一些敏感信息，有些需要更新比如***k8s***的配置
    
     gitlab搭建完毕后，可从github引入样例项目
 
-    - oss/oss-jenkins-pipeline             负责jenkins pipeline部署的项目
-    - oss/oss-todomvc                      样例项目(引入后需要1.稍加[修改ci.sh脚本](TODOMVC.md)，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致，还有脚本最后有跳过执行步骤的，直接去掉判断。2.把Dockerfile中的java镜像的registry换成home1oss,或者人工pull一个到docker.registry.internal)   
-    - oss/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
-    - oss/oss-todomvc-gateway-config       todomvc-gateway配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
-    - oss/oss-todomvc-app-config           todomvc-app配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
-    - oss/common-config                    所有项目公共配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
+    - home1oss/oss-jenkins-pipeline             负责jenkins pipeline部署的项目
+    - home1oss/oss-todomvc                      样例项目(引入后需要1.稍加[修改ci.sh脚本](TODOMVC.md)，比如 GIT_REPO_OWNER即该项目拥有者需要修改，并且有个约定todomvc等项目要和oss-internal拥有者一致，还有脚本最后有跳过执行步骤的，直接去掉判断。2.把Dockerfile中的java镜像的registry换成home1oss,或者人工pull一个到docker.registry.internal)   
+    - configserver/oss-todomvc-thymeleaf-config     todomvc-thymeleaf配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
+    - configserver/oss-todomvc-gateway-config       todomvc-gateway配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
+    - configserver/oss-todomvc-app-config           todomvc-app配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
+    - configserver/common-config                    所有项目公共配置 **要在gitlab上配置deploy key,公钥在[configserver](https://raw.githubusercontent.com/home1-oss/oss-configserver/master/src/main/resources/deploy_key.pub)中**
     
 ### jenkins
     
