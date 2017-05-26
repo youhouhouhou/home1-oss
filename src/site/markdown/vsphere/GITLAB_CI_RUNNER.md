@@ -14,7 +14,7 @@
 
 ci中使用到该文件，目前是通过挂载的形式使用。
 
-- 若使用现在这样的本地挂载方式，则需要在所有的k8s节点执行
+- (**已废弃**)若使用现在这样的本地挂载方式，则需要在所有的k8s节点执行
 
       mkdir -p /root/gitlab-runner/home
       mkdir -p /root/gitlab-runner/etc
