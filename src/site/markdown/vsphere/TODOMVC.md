@@ -24,4 +24,6 @@
           - export OSS_BUILD_GIT_SERVICE="https://github.com"  ## oss-build项目地址
           - export OSS_BUILD_GIT_REPO_OWNER="home1-oss"        ## oss-build ownner
 
-3. 其他            
+3. 其他   
+         
+   - 测试环境configserver通用配置k8s配置的common-config的分支一定要存在，否则出错日志是debug级别有问题也难看出来。      
